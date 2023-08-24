@@ -10,6 +10,6 @@ const main = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-    main
+    main,
 };
  
