@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server.js"
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
     "mongoose": "^7.4.2"
   },
   "devDependencies": {
+    "colors": "^1.4.0",
     "nodemon": "^3.0.1"
   }
 }
