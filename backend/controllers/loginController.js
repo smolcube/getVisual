@@ -13,43 +13,46 @@ const Customer = require('../models/customerModel');
 // @route  POST /getvisual/login|signin
 // @access Public
 const login = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { identifier, password } = req.body; //"identifier" can be either email or username
 
   // Validation
-  if (!email || !password) {
+  if (!identifier || !password) {
     res.status(400);
     throw new Error('Please fill all fields');
   }
 
-  // check credentials user OR customer by email
+  // check credentials user OR customer
+  // Check if user exists and credentials match (using email or username) 
   // compare passwords (plain text & hashed)
-  const user = await User.findOne({ email });
+  const user = await User.findOne({
+    $or: [{ email: identifier }, { username: identifier }],
+  });
   if (user && (await bcrypt.compare(password, user.password))) {
-   
-    // Generate JWT
-    const token = generateJWTToken(customer._id);
+    const token = generateJWTToken(user._id);
     res.json({
       username: user.username,
       email: user.email,
       accType: user.accType,
       token: token,
-      message: "LOGGED IN SUCCESSFULLY" 
+      message: 'LOGGED IN SUCCESSFULLY',
     });
-    return; // Exit early since we found a matching user
+    return;
   }
-  const customer = await Customer.findOne({ email });
+
+  // Check if customer exists and credentials match (using email or username)
+  const customer = await Customer.findOne({
+    $or: [{ email: identifier }, { username: identifier }],
+  });
   if (customer && (await bcrypt.compare(password, customer.password))) {
-    
-    // Generate JWT
     const token = generateJWTToken(customer._id);
     res.json({
       username: customer.username,
       email: customer.email,
       accType: customer.accType,
       token: token,
-      message: "LOGGED IN SUCCESSFULLY" // Add this line to show the account type
+      message: 'LOGGED IN SUCCESSFULLY',
     });
-    return; // Exit early since we found a matching customer
+    return;
   }
 
   // Invalid credentials
