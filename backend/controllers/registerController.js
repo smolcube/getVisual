@@ -12,7 +12,7 @@ const generateJWTToken = require('../config/jwt');
 // @route  POST /getvisual/register|signup
 // @access Public
 const register = asyncHandler(async (req, res) => {
-    const {email, username, password, accType} = req.body;
+    const {username, email, password, accType} = req.body;
 
     // Simple Validation
     if(!email || !username || !password || !accType){
