@@ -18,7 +18,7 @@ const login = asyncHandler(async (req, res) => {
   // Validation
   if (!email || !password) {
     res.status(400);
-    throw new Error('Please add all fields');
+    throw new Error('Please fill all fields');
   }
 
   // check credentials user OR customer by email
