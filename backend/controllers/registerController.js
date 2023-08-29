@@ -1,5 +1,6 @@
 //*** DONE ***//
 const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcryptjs');
 
 // Import models
 const Customer = require('../models/customerModel');
