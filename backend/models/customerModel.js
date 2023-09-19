@@ -9,6 +9,10 @@ const customerSchema = new mongoose.Schema({
            unique: true,
            required: [true, 'Please add an email'] },
 
+  verified: { type: Boolean,
+              default: false,
+              required: [true] },
+              
   password: { type: String,
               required: [true, 'Please enter a password'] },
 
