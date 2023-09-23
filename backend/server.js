@@ -13,7 +13,9 @@ connectDB()
 app.use(errorHandler);
 app.use(express.json()); // Use built-in JSON parsing middleware
 app.use(express.urlencoded({ extended: true })); // Use built-in URL-encoded parsing middleware
+
 app.use('/getvisual', require('./routes/mainRoutes'));
+app.use('/getvisual/dashboard', require('./routes/adminRoutes'));
 
 app.listen(port, () => {
     console.log(`Server runs on port ${port}`);
