@@ -14,6 +14,9 @@ const userSchema = new mongoose.Schema({
  
   password: { type: String,
               required: [true, 'Please enter a password'] },
+ 
+  resetToken: { type: String,
+            default: "", },
 
   accType: { type: String,
              enum: ['user'], required: true },
