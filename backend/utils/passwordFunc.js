@@ -11,9 +11,13 @@ const isPasswordValid = (password) => {
       At least one special character among @$!%*?&
       Minimum total length of 8 characters */
 
+console.log("Received password:", password);
+
 // Check password against specified conditions
     const passwordConditions = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordConditions.test(password);
+    const isValid = passwordConditions.test(password);
+    console.log("Password validation result:", isValid);
+    return isValid;
 };
 
 // @desc Hashing password
