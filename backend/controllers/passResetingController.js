@@ -174,6 +174,8 @@ const setPass = asyncHandler(async (req, res) =>{   // Validation
         return;
     }
 
+    res.clearCookie('passwordResetToken');
+    
     // Password updated successfully
     res.status(200).json({ message: 'Password updated successfully' });
     } 
@@ -183,8 +185,6 @@ const setPass = asyncHandler(async (req, res) =>{   // Validation
     }
 
 })
-
-
 
 module.exports = {
     forgotPass,
