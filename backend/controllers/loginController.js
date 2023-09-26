@@ -28,7 +28,7 @@ const login = asyncHandler(async (req, res) => {
     $or: [{ email: identifier }, { username: identifier }],
   });
   if (user && (await bcrypt.compare(password, user.password))) {
-    const token = generateJWTToken(user._id);
+    const token = generateJWTToken({id: user._id}, "24hr");
     res.json({
       username: user.username,
       email: user.email,
@@ -44,7 +44,7 @@ const login = asyncHandler(async (req, res) => {
     $or: [{ email: identifier }, { username: identifier }],
   });
   if (customer && (await bcrypt.compare(password, customer.password))) {
-    const token = generateJWTToken(customer._id);
+    const token = generateJWTToken({id: customer._id}, "24hr");
     res.json({
       username: customer.username,
       email: customer.email,
@@ -60,10 +60,32 @@ const login = asyncHandler(async (req, res) => {
 });
 
 // @desc   Get profile
-// @route  GET /getvisual/username
+// @route  GET /getvisual/:username
 // @access Public AND private
 const getProfile = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'user profile page' });
+  const username = req.params.username; // Access the 'username' parameter from the URL
+  
+  try {
+    // Find the user by username in the database
+    const profile = await User.findOne({ username });
+
+    if (!profile) {
+      return res.status(404).json({ message: 'profile not found' });
+    }
+
+    // Return the user's profile information
+    res.status(200).json({ username: profile.username, email: profile.email, /* Add other profile fields here */ });
+  } 
+  catch (error) {
+    // Handle any errors that occur during the database query
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+  
+ 
+  // res.send(`Username: ${username}`);
+  // res.status(200).json({ message: 'user profile page' });
+
 });
 
 module.exports = {
