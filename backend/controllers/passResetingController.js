@@ -122,7 +122,7 @@ const checkPassToken = asyncHandler(async (req, res)=>{
 
 
 // @desc   Reset password for both users and customers
-// @route  GET /getvisual/login|signin/forgot-password/reset-password
+// @route  POST /getvisual/login|signin/forgot-password/reset-password
 // @access Private
 const setPass = asyncHandler(async (req, res) =>{   // Validation
     const token = req.cookies.passwordResetToken;
