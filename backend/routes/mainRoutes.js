@@ -5,7 +5,7 @@ const router = express.Router();
 const { main} = require('../controllers/mainController');
 const { register, confirmEmail } = require('../controllers/registerController');
 const { login, getProfile } = require('../controllers/loginController')
-const { forgotPass , resetPass} = require('../controllers/passResetingController')
+const { forgotPass , checkPassToken, setPass } = require('../controllers/passResetingController')
 
 // Main routes
 router.get('/', main);
@@ -15,7 +15,8 @@ router.get('/register/confirm-email/:registerToken',confirmEmail);
 router.post('/login',login);
 
 router.post('/login/forgot-password', forgotPass);
-router.post('/login/forgot-password/reset-password/:passwordResetToken', resetPass);
+router.get('/login/forgot-password/reset-password/:passwordResetToken', checkPassToken);
+router.post('/login/forgot-password/reset-password/:passwordResetToken',setPass);
 
 router.get('/:username', getProfile);
 
