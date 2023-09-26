@@ -25,7 +25,11 @@ const adminLogin = asyncHandler(async (req, res)=>{
   if (admin && (password, admin.password)){
    
     // Generate JWT
-    const token = generateJWTToken(admin._id);
+    const token = generateJWTToken({id: admin._id}, "12hr");
+
+    // Set the token in the response headers
+    res.setHeader('Authorization', `Bearer ${token}`);
+    
     res.json({
       username: admin.email,
       email: admin.email,
