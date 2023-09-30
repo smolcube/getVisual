@@ -8,17 +8,17 @@ const { login, getProfile } = require('../controllers/loginController')
 const { forgotPass , checkPassToken, setPass } = require('../controllers/passResetingController')
 
 // Main routes
-router.get('/', main);
+router.get('/', main); // Visitors and there should be another on for registered
 router.post('/register',register);
 router.get('/register/confirm-email/:registerToken',confirmEmail);
 
 router.post('/login',login);
 
-router.post('/login/forgot-password', forgotPass);
-router.get('/login/forgot-password/reset-password/:passwordResetToken', checkPassToken);
-router.post('/login/forgot-password/reset-password/:passwordResetToken',setPass);
+router.post('/auth/forgot-password', forgotPass);
+router.get('/auth/forgot-password/reset-password/:passwordResetToken', checkPassToken);
+router.post('/auth/forgot-password/reset-password/:passwordResetToken',setPass);
 
-router.get('/:username', getProfile);
+router.get('/profile/:username', getProfile);
 
 
 module.exports = router;
