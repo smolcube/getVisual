@@ -1,0 +1,118 @@
+// اعدادات عامة خاصة بالخطوط
+@use '../utils/' as *;
+
+body{
+font-family: 'Montserrat', system-ui, 'Segoe UI', 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+h1{
+    /* headers */
+    font-size: clamp(1.875rem, 1.083rem + 3.38vw, 4.125rem);
+    font-weight: 600;
+    line-height: 124.4%; /* 37.32px */
+    color: $blue;
+}
+
+h2{
+    font-size:clamp(1.125rem, 0.531rem + 2.535vw, 2.813rem);
+    color: $blue;
+}
+
+h3{
+    font-size: clamp(0.75rem, 0.222rem + 2.254vw, 2.25rem);
+    color: $blue-accent;
+}
+
+h4{
+    font-size: clamp(0.65rem, 0.144rem + 1.16vw, 1.188rem);
+    text-align: center;
+    color: $blue;
+}
+//username profile
+h5{
+    color: $white;
+    font-size: clamp(0.75rem, 0.244rem + 2.16vw, 2.188rem);
+    font-style: bold;
+    text-transform: uppercase;
+}
+// categories // services cards
+h6{
+    color: $blue;
+    font-size: rem(18);
+    font-weight: bold; 
+}
+
+p{
+/* content */
+color: $blue;
+font-size: clamp(0.75rem, 0.354rem + 1.69vw, 1.875rem);
+line-height: 170%; /* 40.8px */
+
+.highlighted{
+    color: $yellow;
+    font-style: italic;
+}
+
+}
+li, a{
+    display: inline;
+    list-style: none;
+    text-decoration: none;
+}
+
+ul{
+    width: fit-content;
+}
+li{
+    width: fit-content;
+    font-size: clamp(0.75rem, 0.393rem + 0.952vw, 1.25rem);
+    list-style: none;
+    text-decoration: none;
+}  
+  
+span{
+    display: inline;
+}
+
+.span-small{
+    color: $blue;
+    font-size: clamp(0.5rem, 0.368rem + 0.563vw, 0.875rem);
+    font-weight: 600;
+a{
+    font-size: clamp(0.5rem, 0.346rem + 0.657vw, 0.938rem);
+    color:$blue;
+}
+}
+
+.span-mid{
+    color: $light-blue;
+    font-size: clamp(0.625rem, 0.317rem + 1.315vw, 1.5rem);
+    margin-bottom: rem(8);
+}
+.faded{
+    color: $grey-accent;
+}
+
+//bio//descreption
+.content{
+    color: #000;
+    font-size: rem(14);
+    line-height: 130%; /* 18.2px */
+}
+
+.about-content{
+    color: $light-blue;
+    line-height: 183.5%;
+}
+
+.style-title{
+    /* web - style */
+    color: $light-blue;
+    font-size:clamp(1.563rem, 0.902rem + 2.817vw, 3.438rem);
+    font-weight: 500;
+    line-height: 124.4%; /* 68.42px */
+}
+
+input::placeholder {
+    font-size: clamp(0.875rem, 0.743rem + 0.563vw, 1.25rem); 
+}

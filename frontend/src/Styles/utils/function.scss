@@ -1,0 +1,8 @@
+//converting pxs to rems
+// دالة تقوم بالتحويل من وحدة البيكسل الى وحدة الرم
+
+@use "sass:math";
+
+@function rem($pixels, $context: 16) {
+    @return (math.div($pixels, $context)) * 1rem;
+}
