@@ -12,6 +12,7 @@ const User = require('../models/userModel');
 const generateJWTToken = require('../config/jwt');
 const { isPasswordValid, passwordHashing } = require('../utils/passwordFunc');
 const { sendEmail } = require('../utils/sendEmail');
+const { cookieToken } = require('../utils/cookieToken');
 
 // @desc   Register new user
 // @route  POST /getvisual/register|signup
@@ -63,16 +64,11 @@ const register = asyncHandler(async (req, res) => {
     
 
     const registerLink =  `http://localhost:5000/getVisual/register/confirm-email/${random}`
-  
-    // Store the passwordResetToken in a cookie and set its expiration time
-    const tokenCookie = cookie.serialize('registerToken', registerToken, {
-      maxAge: 24 * 60 * 60 * 1000, // 24hr in milliseconds
-      path: '/getVisual/register/confirm-email', // Set the cookie path to match your reset password route
-      httpOnly: true, // Make the cookie accessible only via HTTP
-    });
 
-    // Attach the registerToken cookie to the response
-    res.cookie('registerToken', registerToken);
+    // make and save a cookie
+    cookieToken(req, res, 'registerToken',
+        registerToken, 24 * 60 * 60 * 1000,
+        '/getVisual/register/confirm-email');
 
 
     sendEmail(

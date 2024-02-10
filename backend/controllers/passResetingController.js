@@ -10,6 +10,7 @@ const generateJWTToken = require('../config/jwt');
 // Modules
 const { isPasswordValid, passwordHashing } = require('../utils/passwordFunc');
 const { sendEmail } = require('../utils/sendEmail');
+const { cookieToken } = require('../utils/cookieToken');
 
 // Import models
 const User = require('../models/userModel');
@@ -45,17 +46,11 @@ if (user) {
 // Generate a unique passwordResetToken for password reset
 const passwordResetToken = generateJWTToken({ id }, "15m");
 
-// Store the passwordResetToken in a cookie and set its expiration time
-const tokenCookie = cookie.serialize('passwordResetToken', passwordResetToken, {
-    maxAge: 15 * 60 * 1000, // 15 minutes in milliseconds
-    path: '/getVisual/login/reset-password', // Set the cookie path to match your reset password route
-    httpOnly: true, // Make the cookie accessible only via HTTP
-});
-
-console.log(tokenCookie);
-
-// Attach the passwordResetToken cookie to the response
-res.cookie('passwordResetToken', passwordResetToken);
+// make and save a cookie
+cookieToken(req, res, 'passwordResetToken', 
+        passwordResetToken, 15 * 60 * 1000,
+        '/getVisual/login/reset-password');
+  
 
 // Set a random value 
 const random =crypto.randomBytes(32).toString('hex');

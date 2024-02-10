@@ -5,6 +5,9 @@ const bcrypt = require('bcryptjs');
 //JWT module
 const generateJWTToken = require('../config/jwt');
 
+// Modules
+const { cookieToken } = require('../utils/cookieToken');
+
 // Import models
 const User = require('../models/userModel');
 const Customer = require('../models/customerModel');
@@ -28,12 +31,18 @@ const login = asyncHandler(async (req, res) => {
     $or: [{ email: identifier }, { username: identifier }],
   });
   if (user && (await bcrypt.compare(password, user.password))) {
-    const token = generateJWTToken({id: user._id}, "24hr");
+    const authToken = generateJWTToken({id: user._id}, "24hr");
+    
+  // make and save a cookie
+  cookieToken(req, res, 'authCookie',
+      authToken, 24 * 60 * 60 * 1000,
+      '/profile/:username');
+
     res.json({
       username: user.username,
       email: user.email,
       accType: user.accType,
-      token: token,
+      token: authToken,
       message: 'LOGGED IN SUCCESSFULLY',
     });
     return;
@@ -44,17 +53,23 @@ const login = asyncHandler(async (req, res) => {
     $or: [{ email: identifier }, { username: identifier }],
   });
   if (customer && (await bcrypt.compare(password, customer.password))) {
-    const token = generateJWTToken({id: customer._id}, "24hr");
+    const authToken = generateJWTToken({id: customer._id}, "24hr");
+
+  // make and save a cookie
+  cookieToken(req, res, 'authCookie',
+    authToken, 24 * 60 * 60 * 1000,
+    '/');
+
     res.json({
       username: customer.username,
       email: customer.email,
       accType: customer.accType,
-      token: token,
+      token: authToken,
       message: 'LOGGED IN SUCCESSFULLY',
     });
     return;
   }
-
+  
   // Invalid credentials
   res.status(401).json({ message: 'Invalid credentials' });
 });
