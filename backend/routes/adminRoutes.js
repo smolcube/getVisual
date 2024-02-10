@@ -9,7 +9,7 @@ const { adminLogin } = require('../controllers/adminController');
 const { protect } = require('../middleware/authHandler')
 
 // Main routes
-router.get('/main',protect, dashboard);
+router.get('/main', dashboard);
 router.post('/login|signin', adminLogin);
 router.post('/logout');
 
