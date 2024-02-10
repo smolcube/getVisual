@@ -9,13 +9,13 @@ export default function Footer() {
         <ul>
         <li><a href="/#">Logo design</a></li>
         <li><a href="/#">Identity design</a></li>
+        <li><a href="/#">Illustration</a></li>
         <li><a href="/#">Print design</a></li>
-        <li><a href="/#">Print design</a></li>
-        <li><a href="/#">Print design</a></li>
+        <li><a href="/#">User Interface</a></li>
       </ul>
       <ul>
-        <li><a href="/#">Logo design</a></li>
-        <li><a href="/#">Identity design</a></li>
+        <li><a href="/#">Psckaging</a></li>
+        <li><a href="/#">Motion</a></li>
         <li><a href="/#">Print design</a></li>
         <li><a href="/#">Print design</a></li>
         <li><a href="/#">Print design</a></li>
