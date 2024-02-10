@@ -1,0 +1,49 @@
+
+@use '../utils/' as *;
+
+.service-container {
+  margin-inline: rem(150);
+  margin-bottom: rem(100);
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+
+  @include max-width(medium){
+    margin-inline: rem(70);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include max-width(small){
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}
+
+.service-intro {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-item {
+  text-align: center;
+  margin-bottom: 20px;
+  img {
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  h4 {
+    margin-top: 10px;
+    &:hover{
+      color: $yellow;
+      cursor: pointer;
+    }
+}
+}

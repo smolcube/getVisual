@@ -1,0 +1,43 @@
+@use '../utils/' as *;
+
+body{
+    background-color: $background;
+}
+.posts-container {
+    margin: rem(100);
+    padding: rem(70) rem(30);
+    background-color: $white;
+    border-radius: 45px;
+
+    &__table {
+      // Styles for the container table
+      &--title {
+          margin-block-end: rem(30);
+          text-transform: capitalize;
+        h1 {
+           text-align: start;    
+           font-weight: 500;
+
+        }
+        p {
+           color: $light-blue;
+        }
+      }
+      &--wrapper {
+        display: grid;
+        grid-template-columns: repeat(3,auto);
+        gap: 50px;
+      }
+      &--column1,
+      &--column2,
+      &--column3 {
+        display: grid;
+        place-items: center;
+        border-right: 2px solid $light-blue;
+      }
+      &--column3 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+}
+  

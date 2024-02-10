@@ -1,0 +1,96 @@
+// phone first
+// login/register containers
+// تنسيق للعناصر التي تملك اسم الكلاس 
+// container 
+// وهي صفحة تسجيل الدخول وصفحة تسجيل حساب جديد
+
+@use '../utils' as *;
+
+.container{
+  margin: rem(70) rem(30);
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 6px;
+
+  //large
+  @include min-width(medium){
+  margin: rem(100) rem(120);
+  }
+  
+&__column1{
+  width: fit-content;
+
+  &--title{
+    margin-bottom: rem(16);
+  }
+  h1{
+    text-align: left;
+
+  }
+  text-align: center;
+
+  &--form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+
+  //medium
+  @include medium-and-smaller{
+    text-align: center;
+}
+
+    .form-messages{
+      @include medium-and-smaller{
+        margin-bottom: rem(15);
+      }
+
+      margin-bottom: rem(30);
+      display: flex;
+      gap: clamp(5.625rem, 0.714rem + 13.095vw, 12.5rem);
+      justify-content: space-between;
+
+      span, a{
+      font-size: clamp(0.5rem, 0.368rem + 0.563vw, 0.875rem);
+    }
+    a{
+      color: $light-blue;
+    }
+    span{
+      color:$red-accent;
+    }
+  }
+
+    .form-radio{
+      display: flex;
+      gap: 50%;
+      font-size: clamp(0.625rem, 0.405rem + 0.939vw, 1.25rem);
+      color: $blue;
+      @include medium-and-smaller{
+        gap: 30%;
+      }
+      input{
+        margin-right: 5px;
+      }
+
+      .radio-item{
+        display: flex;
+        align-items: center;
+      }
+    }
+    .form-btn{
+      margin-bottom: 5px;
+    }
+  }
+}
+
+&__column2{
+  img{
+    width: clamp(10.5rem, 2.489rem + 34.178vw, 33.25rem);
+    height: clamp(12.875rem, 6.933rem + 25.352vw, 29.75rem);
+    position: relative;
+    right: 0;
+    z-index: -1;
+  }
+}
+}

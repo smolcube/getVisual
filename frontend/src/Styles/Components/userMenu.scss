@@ -1,0 +1,35 @@
+
+@use '../utils/' as *;
+
+.user-menu{
+    padding-block: rem(35);
+    padding-inline: rem(20);
+    position: absolute;
+    top: 85%;
+    right: 9.6%;
+    min-width: auto;
+    height: fit-content;
+    background-color:$white;
+    border-radius: 20px;
+    z-index: 1;
+
+    //small
+    @include max-width(small){
+        padding-block: rem(20);
+        top: 75%;
+        right: 12%;
+    }
+ul{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    gap: rem(30);
+li > a{
+    color:$light-blue;
+    &:hover{
+        color: $light-yellow;
+    }
+
+}
+}
+}

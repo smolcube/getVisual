@@ -1,0 +1,101 @@
+
+@use '../utils/' as *;
+
+.navbar{
+  position: fixed;
+  top: 0;
+  place-items: center;
+  width: 100%;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  grid-template-columns:0.2fr 2fr 0.25fr;
+  gap:26px;
+  background-color:$white;
+  padding: rem(15) rem(120);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    
+    // only meduim
+    @include medium-and-smaller{
+        padding: rem(18) rem(50);
+    }
+
+    // only small
+    @include max-width(small){
+        padding-inline: rem(20);
+        grid-template-columns: 0.1fr 2fr;
+        justify-items: right;
+    }
+  &__list{
+    display: flex;
+    align-items: baseline;
+    gap: rem(30);
+
+    @include min-width(small){
+      .opt{
+          display: none;
+      }
+  }
+
+
+    @include max-width(small){
+      padding: rem(90) calc(35%/2);
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      place-items: center;
+      gap: 30px;
+      z-index: 2;
+      top: 0;
+      right: 0;
+      width: 47%;
+      height: 100vh;
+      background-color: $white;
+      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+      padding: 65px 0 0 10px;
+      transition: 0.3s ease-in-out;
+
+    }
+      li:not(:last-child){
+        a, li{
+          padding-block-end: 5px;
+          color:$blue;
+          transition: 0.3s ease-in-out;
+        
+          &:hover, 
+          .active{
+            color: $yellow;
+            cursor: pointer;
+            border-bottom: 2px solid $yellow;
+      }
+    }
+
+    }
+  }
+
+  &__buttons{
+    display: flex;
+    place-items: center;
+    width: max-content;
+    gap: 15px; ;
+
+    .user-info{
+      display: flex;
+      place-items: center;
+      flex-direction: row-reverse;
+      gap: 5px;
+
+      button > img{
+        width: clamp(1.563rem, 1.452rem + 0.469vw, 1.875rem);
+      }
+    }
+    &--menu{
+      display: none;
+
+      @include max-width(small){
+      display: block;
+      z-index: 2;
+      }
+  }
+  }
+}

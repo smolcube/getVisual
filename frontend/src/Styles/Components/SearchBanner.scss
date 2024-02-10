@@ -1,0 +1,54 @@
+@use '../utils/' as*;
+.search-banner {
+    top: 0;
+    right: rem(110);
+    display: flex;
+    place-items: center;
+   // height: 100px;
+
+    #search{
+    color: rgb(255, 162, 14);
+
+    }
+  }
+  
+  .search-icon,
+  .search-button,
+  .close-button {
+    background-color: $white;
+    color: rgb(255, 162, 14);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px;
+    margin: 1px;
+  }
+  
+  .search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input input {
+    padding: 6px;
+    border: 2px solid rgb(255, 253, 251);
+    border-radius: 4px;
+    margin-right: 4px;
+    transition: border-color 0.3s;
+  }
+  
+  .search-input input:focus {
+    outline: 2px solid orange;
+    outline-offset: -2px;
+  }
+  
+  .close-button {
+    font-size: 14px;
+  }
+  

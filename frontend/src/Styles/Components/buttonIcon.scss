@@ -1,0 +1,11 @@
+@use '../utils' as *;
+
+.icn-btn{
+    background: none;
+    border: 0;
+    border-radius: 50%;
+    padding: 2px 3px;
+&:hover{
+    background-color: $grey-accent;
+}
+}

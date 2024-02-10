@@ -1,3 +1,4 @@
+//تنسيقات عامة 
 @use '../utils/' as *;
 
 *, *::after, *::before{
@@ -9,6 +10,7 @@
 }
 body{
     overflow-x: hidden;
+
 }
 
 button{
@@ -25,6 +27,7 @@ ion-icon {
 }
 
 // Styling classes
+// كلاسات تنسيق
 .visually-hidden {
     position: absolute;
     width: 1px;

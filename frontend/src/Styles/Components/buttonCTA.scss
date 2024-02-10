@@ -1,0 +1,67 @@
+
+@use '../utils' as *;
+
+.cta{
+  width: max-content;
+  padding-inline: rem(10);
+  padding-block: rem(5);
+  font-size: clamp(0.625rem, 0.405rem + 0.939vw, 1.25rem);
+  color:$white ;
+  border-radius: 50px;
+
+  a{
+    color: $white;
+  }
+
+  @include max-width(small){
+    padding-block: rem(3);
+    padding-inline: rem(8);
+}
+}
+/* Primary CTA button */
+.pri-cta{
+    background-color: $yellow;
+    border: 3px solid $primary;
+    
+    &:hover{
+        background-color: $light-yellow;
+        border-color: $light-yellow;
+      }
+
+      @include medium-and-smaller{
+        border: 2px solid $primary;
+      
+    }
+
+  }
+
+  /* Secondary CTA button */
+  .sec-cta{
+      background-color: $light-blue;
+      border: 3px solid $secondary;
+
+      &:hover{
+          background-color: $secondary;
+          border-color: $secondary;
+        }
+  
+        @include medium-and-smaller{
+          border: 2px solid $secondary;
+        
+      }
+    }
+  
+.inactive-cta{
+  background-color: $light-blue;
+  border: 3px solid $secondary;
+
+  &:hover{
+      background-color: $secondary;
+      border-color: $secondary;
+    }
+
+    @include medium-and-smaller{
+      border: 2px solid $secondary;
+    
+  }
+}

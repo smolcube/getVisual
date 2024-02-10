@@ -1,0 +1,78 @@
+
+@use '../utils/' as *;
+
+.postService{
+    direction: rtl;
+    margin-block-start: rem(135) ;
+
+    &__header{
+        background-image: url("../Styles/assests/post-service-wide.jpg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 80vh;
+    
+        @include max-width(small){
+            margin-bottom: rem(25);
+            background-image: url("../Styles/assests/post-service-small.jpg");
+            background-size: cover;
+        }
+
+    &--text{   
+        margin-inline-start: rem(121);
+        margin-inline-end: rem(100);
+        padding-right: 25%;
+
+        @include max-width(small){
+        margin-block-start: 70%;
+        margin-inline: auto;
+        padding-inline: 64px;
+        position: absolute;
+        text-align: center;
+        }
+    
+    h2{
+      margin-bottom: rem(9.008);
+    }
+    }
+}
+
+    &__upload{
+        margin-block-end: rem(70) ;
+        margin-inline: rem(50);
+        h3{
+            margin-bottom: rem(33);
+        }
+        &--form{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: rem(25);  
+
+        @include min-width(medium){
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: rem(25);
+        }
+        
+        @include max-width(small){
+            display: flex;
+            flex-direction: column;
+            place-items: left;
+        }
+        
+        .upload-field-input{
+            position: relative;
+        }
+        .label{
+            position: absolute;
+            left: 41%;
+            bottom: 60px;
+            color: $light-blue;
+            font-size: 16px;
+            font-weight:400;
+        }
+
+    
+        
+        }
+    }
+}

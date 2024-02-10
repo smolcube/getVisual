@@ -1,0 +1,75 @@
+@use '../utils' as *;
+
+.faqs {
+  direction: rtl;
+  text-align: right;
+  margin-bottom: rem(100);
+  padding: rem(70) rem(120);
+  background-color: $cards-background;
+
+  @include max-width(medium) {
+    padding: rem(35) rem(60);
+    margin-bottom: rem(50);
+  }
+
+  &__questions {
+    margin-top: rem(50);
+
+    @include max-width(medium) {
+      margin-top: rem(30);
+    }
+
+    &--item {
+      padding: rem(10)rem(20);
+      margin-bottom: rem(25);
+      display: flex;
+      flex-direction: column;
+      font-size: clamp(0.813rem, 0.548rem + 1.127vw, 1.563rem);
+      background-color: $white;
+      border-radius: 30px;
+
+      @include max-width(medium){
+        padding: 0;
+      }
+      
+
+      .question-container {
+        padding-inline: rem(20) 0;
+        padding-block: rem(10);
+        display: flex;
+        align-items: center;
+      
+        .showAns{
+          background-color: white;
+        }
+      }
+
+      .question {
+        margin-inline-start: rem(20); 
+        color: $blue;
+
+      @include max-width(medium){
+        margin-inline-start: rem(10);
+      }
+      }
+    }
+
+    .answer {
+      margin-inline-start: rem(75);
+      margin-block: rem(0) rem(10);
+      padding-top: rem(10);
+      max-width: 80%;
+      height: fit-content;
+      line-height: 200%;
+      color: $light-blue;
+      border-top: 2px dashed $yellow;
+
+      @include max-width(medium){
+        margin-inline-start: rem(40);
+        padding: 0;
+        padding-top: rem(10);
+      }
+
+    }
+  }
+}

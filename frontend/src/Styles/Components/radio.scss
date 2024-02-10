@@ -1,0 +1,7 @@
+
+@use '../utils/' as *;
+
+input[type="radio"]{
+    width: clamp(0.625rem, 0.317rem + 1.315vw, 1.5rem);
+    height: clamp(0.625rem, 0.317rem + 1.315vw, 1.5rem);
+}

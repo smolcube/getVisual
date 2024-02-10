@@ -1,0 +1,74 @@
+
+@use '../utils/' as *;
+
+.dashboard{
+    background-color: $background;
+    padding-block: rem(50);
+
+ &__main{
+    margin-inline: rem(76) ;
+    padding: rem(50) rem(100);
+    height:fit-content;
+    background-color: $white;
+    border-radius: 25px;
+ @include medium-and-smaller{
+    margin-inline: rem(30) ;
+    padding-inline: rem(30);
+ }
+    h1{
+        text-align: left;
+    }
+    p{
+        color: $light-blue;
+        margin-bottom: rem(60);
+    }
+    &--cards{
+        display: flex;
+        place-items: center;
+        gap: 40px;
+    @include max-width(small){
+        flex-direction: column;
+    }
+    .card{
+        position: relative;
+        padding: rem(47) rem(85) rem(185) rem(50);
+        min-width: 15%;
+        background-color: $cards-background;
+        border-radius: 20px;
+    &:hover{
+        background-color: $blue;
+    }
+    }
+    #pending > h3{
+        &::before{
+            content: '.';
+            position: absolute;
+            bottom: 75%;
+            left: 5%;
+            font-size: 8rem;
+            color:$light-yellow;
+        }
+      }
+    #rejected > h3{
+        &::before{
+            content: '.';
+            position: absolute;
+            bottom: 75%;
+            left: 5%;
+            font-size: 8rem;
+            color:$red-accent;
+        }
+      }
+    #approved > h3{
+        &::before{
+            content: '.';
+            position: absolute;
+            bottom: 75%;
+            left: 5%;
+            font-size: 8rem;
+            color: $green-accent;
+        }
+      }
+    }
+ }
+}

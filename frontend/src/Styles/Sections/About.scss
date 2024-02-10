@@ -1,0 +1,57 @@
+
+@use "../utils/" as *;
+//small first
+.about {
+  margin: 0 rem(50) rem(100) rem(50);
+
+  @include min-width(medium) {
+    margin: rem(0) rem(100) rem(200) rem(100);
+  }
+
+  &__container {
+    grid-template-columns: auto;
+
+  @include min-width(medium) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+
+    &--tile1 {
+      .categ::before {
+        content: '+20';
+        margin-inline-end: 10px;
+        font-size: clamp(1.875rem, 0.775rem + 4.695vw, 5rem);
+        color:$yellow;
+      } 
+    }  
+    .card-item {
+      padding: 20px 40px; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: right;
+      direction: ltr;
+
+      @include only-medium {
+          flex-direction: row;
+          text-align: left;
+          column-gap: 20px;
+      }
+
+      .tile1-image {
+        width: clamp(9.375rem, 4.533rem + 20.657vw, 23.125rem);
+      }
+
+      .tile2-image {
+        width: clamp(6.25rem, 4.489rem + 7.512vw, 11.25rem);
+      }
+
+      .tile3-image {
+        width: clamp(5.625rem, 3.644rem + 8.451vw, 11.25rem);
+      }
+    }
+  }
+}

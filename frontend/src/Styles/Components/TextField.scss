@@ -1,0 +1,59 @@
+
+@use '../utils' as *;
+
+// general styling
+input[type="text"], input[type="password"] {
+    font-size: clamp(0.75rem, 0.574rem + 0.751vw, 1.25rem);
+}
+
+.navbar__buttons--search-field input[type="text"]{
+    padding: 20px;
+    position: absolute;
+    width: rem(625);
+    height: rem(20);
+    top: rem(45);
+    right: 27.5%;
+    background: $light-blue ;
+    color: $white;
+    border-radius: 45px;
+    border: 3px solid $blue;
+
+    // only small screens
+    @include max-width(small){
+        width: 40%;
+        height: rem(18);
+        padding: 10px;
+        right: 40%;
+        top: rem(22);
+        border: 1px solid $blue;
+    }
+    // only medium screens
+    @include medium-and-smaller{
+        width:50%;
+        padding: 11px;
+        right: 29%;
+        top: 4%;
+        border: 2px solid $blue;
+    }
+}
+
+
+////////////////////
+// FORMS TEXT FIELDS
+.form-fields{
+    padding-inline: rem(25);
+    width: 100%;
+    border: none;
+    outline: none;
+    color: $light-blue;
+//small
+@include max-width(small){
+    padding-inline: rem(10);
+    border-width: 1px;
+}
+//medium
+@include min-width(medium){
+    padding-inline: rem(25);
+    border-width: 3px;
+}
+}
