@@ -18,104 +18,95 @@ const { cookieToken } = require('../utils/cookieToken');
 // @route  POST /getvisual/register|signup
 // @access Public
 const register = asyncHandler(async (req, res) => {
-    const {username, email, password, accType} = req.body;
-console.log(req.body);
-    // Simple Validation
-    if(!username || !email || !password || !accType){
-        res.status(400);
-        throw new Error('Please fill all fields');
-    }
+  const { username, email, password, accType } = req.body;
+
+  // Simple Validation
+  if (!username || !email || !password || !accType) {
+      res.status(400);
+      throw new Error('Please fill all fields');
+  }
 
   // Email validation using a regular expression
   const emailConditions = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
   if (!emailConditions.test(email)) {
-    res.status(400);
-    throw new Error('Invalid email format');
+      res.status(400);
+      throw new Error('Invalid email format');
   }
 
   // Check password conditions
   if (!isPasswordValid(password)) {
-    res.status(400);
-    throw new Error('Password must have at least one uppercase letter, one lowercase letter, one digit, one special character among @$!%*?&, and a minimum total length of 8 characters.');
+      res.status(400);
+      throw new Error('Password must have at least one uppercase letter, one lowercase letter, one digit, one special character among @$!%*?&, and a minimum total length of 8 characters.');
   }
 
-    // Check if account exists as a Customer
-    const customerExists = await Customer.findOne({ email });
-    if (customerExists) {
-    res.status(400);
-    throw new Error('Email is already used');
-    }
+  // Check if account exists as a Customer
+  const customerExists = await Customer.findOne({ email });
+  if (customerExists) {
+      res.status(400);
+      throw new Error('Email is already used');
+  }
 
-    // Check if account exists as a User
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-    res.status(400);
-    throw new Error('Email is already used');
-    }
+  // Check if account exists as a User
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+      res.status(400);
+      throw new Error('Email is already used');
+  }
 
-    // Hash password
-    const hashedPass= passwordHashing(password);
+  // Hash password
+  const hashedPass = passwordHashing(password);
 
+  // Generate JWT
+  const registerToken = generateJWTToken({ email }, "24hr");
+  const random = crypto.randomBytes(32).toString('hex');
+  const registerLink = `http://localhost:5000/getVisual/signup/confirm-email/${random}`;
 
-    // Generate JWT
-    const registerToken = generateJWTToken({ email }, "24hr")
-    const random = crypto.randomBytes(32).toString('hex');
-    
+  // make and save a cookie
+  cookieToken(req, res, 'registerToken',
+      registerToken, 24 * 60 * 60 * 1000,
+      '/getVisual/signup/confirm-email');
 
-    const registerLink =  `http://localhost:5000/getVisual/signup/confirm-email/${random}`
-
-    // make and save a cookie
-    cookieToken(req, res, 'registerToken',
-        registerToken, 24 * 60 * 60 * 1000,
-        '/getVisual/signup/confirm-email');
-
-
-    sendEmail(
-    email,
-    'Email verfication',
-    `Dear ${username},\n\n
-Thank you for registering with getVisual! To complete your registration
-and verify your email address, please click on the link below:
-\n\n${registerLink}\n\nIf you didn't request this registration, 
-please ignore this email.\n\nThank you for choosing getVisual!\n\n
-Sincerely,\nThe getVisual Team`,
-    );
-    res.status(200).json({message:"email sent successfully"});
-
-    // Create user OR customer
-    let createdAccount;
-
-    if (accType === 'user') {
-    createdAccount = await User.create({
-      username,
+  // Send email
+  await sendEmail(
       email,
-      password: hashedPass,
-      accType,
-    });
-    } else if (accType === 'customer') {
-    createdAccount = await Customer.create({
-      username,
-      email,
-      password: hashedPass,
-      accType,
-    });
-    }
-  
-    // check creation
-    if (createdAccount) {
-    res.status(201).json({
-      _id: createdAccount.id,
-      username: createdAccount.username,
-      email: createdAccount.email,
-      accType: createdAccount.accType,
-      token: registerToken,
-      message: "REGISTERED SUCCESSFULLY" 
-    });
-    } else {
-    res.status(400);
-    throw new Error('Invalid account data');
-    }
+      'Email verification',
+      `Dear ${username},\n\nThank you for registering with getVisual! To complete your registration and verify your email address, please click on the link below:\n\n${registerLink}\n\nIf you didn't request this registration, please ignore this email.\n\nThank you for choosing getVisual!\n\nSincerely,\nThe getVisual Team`
+  );
+
+  // Create user OR customer
+  let createdAccount;
+
+  if (accType === 'user') {
+      createdAccount = await User.create({
+          username,
+          email,
+          password: hashedPass,
+          accType,
+      });
+  } else if (accType === 'customer') {
+      createdAccount = await Customer.create({
+          username,
+          email,
+          password: hashedPass,
+          accType,
+      });
+  }
+
+  // check creation
+  if (createdAccount) {
+      return res.status(201).json({
+          _id: createdAccount.id,
+          username: createdAccount.username,
+          email: createdAccount.email,
+          accType: createdAccount.accType,
+          token: registerToken,
+          message: "REGISTERED SUCCESSFULLY"
+      });
+  } else {
+      res.status(400);
+      throw new Error('Invalid account data');
+  }
 });
 
 
