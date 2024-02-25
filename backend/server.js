@@ -22,7 +22,7 @@ app.use(cors({origin: 'http://localhost:3000', credentials:true}));
 app.use(cookieParser()); // Use cookie-pasrser to access cookies
 app.use(errorHandler);
 app.use(express.json()); // Use built-in JSON parsing middleware
-app.use(express.urlencoded({ extended: false })); // Use built-in URL-encoded parsing middleware
+app.use(express.urlencoded({ extended: true })); // Use built-in URL-encoded parsing middleware
 
 app.use('/getvisual', require('./routes/mainRoutes'));
 app.use('/getvisual/dashboard', require('./routes/adminRoutes'));
