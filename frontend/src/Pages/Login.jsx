@@ -78,8 +78,8 @@ const handleSubmit= async (e) =>{
   return (
     <div className='container'>
       <div className="container__column1">
-        <h1 className='style-title'>welcome back,</h1>
-        <h1 className="container__column1--title">Login</h1>
+        <h1 className='style-title'>مرحـبا مجددا</h1>
+        <h1 className="container__column1--title">تسجيل الدخول</h1>
       <form
          className='container__column1--form'
          action="/login" 
@@ -95,7 +95,7 @@ const handleSubmit= async (e) =>{
             label="Email or Username"
             type="text"
             id="identifier" //name
-            placeholder="Email or Username"
+            placeholder="البريد الإلكتروني او الاسم"
             value={input.identifier}
             onChange={handleChange}
           />
@@ -109,7 +109,7 @@ const handleSubmit= async (e) =>{
             label="Password"
             type={showPassword ? 'text' : 'password'}
             id="password" //name
-            placeholder="Password"
+            placeholder="كلمة المرور"
             value={input.password}
             onChange={handleChange}
           />
@@ -128,7 +128,7 @@ const handleSubmit= async (e) =>{
         <a 
           className="forgot-message"
           href='/getVisual/auth/forgot-password'>
-          Forgot password?
+          نسيت كلمة المرور؟
         </a>
         </div>
 
@@ -136,16 +136,16 @@ const handleSubmit= async (e) =>{
         <ButtonCTA
         class="pri-cta cta"
         type="submit"
-        name="Login"
+        name="ســجّـل الدخول"
         />
         </div>
       </form>
       <span className='span-mid'>
-        Dont't have an account?
+        ليس لديك حسـاب؟
       </span>
       <br />
       <span className='span-small'>
-        <a href="/getVisual/signup">Sign up here.</a>
+        <a href="/getVisual/signup">.انشـئ حساب</a>
       </span>
       </div>
 

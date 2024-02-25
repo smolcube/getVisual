@@ -70,6 +70,12 @@
   background-color: #BABDC7;
 }
 
+.dropdown-button {
+  background: none;
+  border: none;
+  color: #7890A8;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -99,6 +105,7 @@
 .navbar__list {
   display: flex;
   align-items: baseline;
+  flex-direction: row-reverse;
   gap: 1.875rem;
 }
 @media (min-width: 37.5em) {
@@ -555,11 +562,13 @@ ion-icon {
   }
 }
 
-h1 {
+.adminLogin {
+  padding-block: 150px;
+}
+.adminLogin h1 {
   text-align: center;
 }
-
-.login-form {
+.adminLogin .login-form {
   max-width: 300px;
   margin-block: 75px 100px;
   margin-inline: auto;
@@ -567,22 +576,22 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.login-form__input {
+.adminLogin .login-form__input {
   margin-bottom: 15px;
 }
-.login-form__label {
+.adminLogin .login-form__label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
-.login-form__input-field {
+.adminLogin .login-form__input-field {
   width: 100%;
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.login-form__submit-btn {
+.adminLogin .login-form__submit-btn {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -592,19 +601,19 @@ h1 {
   border-radius: 4px;
   cursor: pointer;
 }
-.login-form__submit-btn:hover {
+.adminLogin .login-form__submit-btn:hover {
   background-color: #0056b3;
 }
 
 .container {
-  margin: 4.375rem 1.875rem;
+  margin: 9.375rem 1.875rem;
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 6px;
 }
 @media (min-width: 71.875em) {
   .container {
-    margin: 6.25rem 7.5rem;
+    margin: 9.375rem 7.5rem;
   }
 }
 .container__column1 {
@@ -615,7 +624,7 @@ h1 {
   margin-bottom: 1rem;
 }
 .container__column1 h1 {
-  text-align: left;
+  text-align: right;
 }
 .container__column1--form {
   display: flex;
@@ -646,17 +655,17 @@ h1 {
   color: #7890A8;
 }
 .container__column1--form .form-messages span {
-  color: hsl(0, 93%, 67%);
+  color: #f95d5d;
 }
 .container__column1--form .form-radio {
   display: flex;
-  gap: 50%;
+  gap: 65%;
   font-size: clamp(0.625rem, 0.405rem + 0.939vw, 1.25rem);
   color: #333366;
 }
 @media (max-width: 992px) {
   .container__column1--form .form-radio {
-    gap: 30%;
+    gap: 50%;
   }
 }
 .container__column1--form .form-radio input {
@@ -678,8 +687,9 @@ h1 {
 }
 
 .dashboard {
+  direction: rtl;
   background-color: #f0f2f5;
-  padding-block: 3.125rem;
+  padding-block: 9.375rem;
 }
 .dashboard__main {
   margin-inline: 4.75rem;
@@ -694,14 +704,12 @@ h1 {
     padding-inline: 1.875rem;
   }
 }
-.dashboard__main h1 {
-  text-align: left;
-}
 .dashboard__main p {
   color: #7890A8;
   margin-bottom: 3.75rem;
 }
 .dashboard__main--cards {
+  direction: rtl;
   display: flex;
   place-items: center;
   gap: 40px;
@@ -713,7 +721,7 @@ h1 {
 }
 .dashboard__main--cards .card {
   position: relative;
-  padding: 2.9375rem 5.3125rem 11.5625rem 3.125rem;
+  padding: 2.9375rem 5.3125rem 9.375rem 3.125rem;
   min-width: 15%;
   background-color: #E3ECF3;
   border-radius: 20px;
@@ -735,7 +743,7 @@ h1 {
   bottom: 75%;
   left: 5%;
   font-size: 8rem;
-  color: hsl(0, 93%, 67%);
+  color: #f95d5d;
 }
 .dashboard__main--cards #approved > h3::before {
   content: ".";
@@ -743,14 +751,11 @@ h1 {
   bottom: 75%;
   left: 5%;
   font-size: 8rem;
-  color: hsl(105, 86%, 65%);
-}
-
-body {
-  background-color: #f0f2f5;
+  color: #7ff359;
 }
 
 .posts-container {
+  direction: rtl;
   margin: 6.25rem;
   padding: 4.375rem 1.875rem;
   background-color: #ffffff;
@@ -783,7 +788,7 @@ body {
 
 .reset {
   display: grid;
-  padding: 4.375rem 6.25rem;
+  padding: 9.375rem 6.25rem;
   height: 100%;
   background-color: #f0f2f5;
   justify-content: center;
@@ -794,8 +799,8 @@ body {
   height: fit-content;
   background-color: white;
   border-radius: 45px;
-  padding-inline: 4.0625rem;
-  padding-block: 1.875rem;
+  padding-inline: 2.8125rem;
+  padding-block: 2.5rem;
 }
 .reset__container--img {
   margin-bottom: 1.625rem;
@@ -805,6 +810,7 @@ body {
 }
 .reset__container--content {
   margin-bottom: 1.5625rem;
+  color: #7890A8;
 }
 .reset__container--form {
   display: flex;
@@ -816,6 +822,12 @@ body {
 }
 .reset__container--form button {
   margin-bottom: 1.875rem;
+}
+.reset__container--form .success {
+  color: green !important;
+}
+.reset__container--form .error {
+  color: red !important;
 }
 
 .postService {

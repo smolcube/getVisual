@@ -3,7 +3,7 @@
 
 .reset{
     display: grid;
-    padding: rem(70) rem(100);
+    padding: rem(150) rem(100);
     height: 100%;
     background-color: $background;
     justify-content: center;
@@ -15,8 +15,8 @@
         height: fit-content;
         background-color: white;
         border-radius: 45px;
-        padding-inline: rem(65);
-        padding-block: rem(30);
+        padding-inline: rem(45);
+        padding-block: rem(40);
 
         &--img{
             margin-bottom: rem(26);
@@ -29,12 +29,14 @@
 
         &--content{
             margin-bottom: rem(25);
+            color: $light-blue;
         }
 
         &--form{
             display: flex;
             flex-direction: column;
             place-items: center;
+              
 
             &-feild{
                 margin-bottom: rem(30);
@@ -43,7 +45,14 @@
             button{
                 margin-bottom: rem(30);
             }
-        }
+            .success {
+                color: green !important;
+              }
+              
+              .error {
+                color: red !important;
+              }
+            }
 
 
     }

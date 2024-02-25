@@ -2,8 +2,9 @@
 @use '../utils/' as *;
 
 .dashboard{
+    direction: rtl;
     background-color: $background;
-    padding-block: rem(50);
+    padding-block: rem(150);
 
  &__main{
     margin-inline: rem(76) ;
@@ -15,14 +16,13 @@
     margin-inline: rem(30) ;
     padding-inline: rem(30);
  }
-    h1{
-        text-align: left;
-    }
+
     p{
         color: $light-blue;
         margin-bottom: rem(60);
     }
     &--cards{
+        direction: rtl;
         display: flex;
         place-items: center;
         gap: 40px;
@@ -31,7 +31,7 @@
     }
     .card{
         position: relative;
-        padding: rem(47) rem(85) rem(185) rem(50);
+        padding: rem(47) rem(85) rem(150) rem(50);
         min-width: 15%;
         background-color: $cards-background;
         border-radius: 20px;

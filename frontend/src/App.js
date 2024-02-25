@@ -6,9 +6,10 @@ import './css/main.css';
 import Navbar from './Components/Navbar';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
-import ResetPass from './Pages/ResetPass';
 import ForgotPass from './Pages/ForgotPass';
-import PostService from './Pages/PostService';
+import PostPackage from './Pages/PostPackage';
+
+import CategoryDets from './Pages/CategoryDets';
 
 import Hero from './Sections/Hero';
 import About from './Sections/About';
@@ -46,10 +47,11 @@ function App() {
         <Route path="/getVisual/signup" element={<Register />} />
         
         <Route path="/getVisual/auth/forgot-password" element={<ForgotPass />} />
-        <Route path="/getVisual/auth/forgot-password/reset-password" element={<ResetPass />} />
-        
                 
-        <Route path="/getVisual/users/:username/post-service" element={<PostService />}/>
+
+        <Route path="/getVisual/services/category-details/:categoryName" element={<CategoryDets />}/>
+        
+        <Route path="/getVisual/users/:username/post-package" element={<PostPackage/>}/>
       {/*  <Route path="/getVisual/users/:username" element={<Profile />}/>
         <Route path="/getVisual/users/:username/settings" element={<Settings />}/>*/}
 

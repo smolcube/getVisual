@@ -19,9 +19,9 @@ const { cookieToken } = require('../utils/cookieToken');
 // @access Public
 const register = asyncHandler(async (req, res) => {
     const {username, email, password, accType} = req.body;
-
+console.log(req.body);
     // Simple Validation
-    if(!email || !username || !password || !accType){
+    if(!username || !email || !password || !accType){
         res.status(400);
         throw new Error('Please fill all fields');
     }
@@ -63,12 +63,12 @@ const register = asyncHandler(async (req, res) => {
     const random = crypto.randomBytes(32).toString('hex');
     
 
-    const registerLink =  `http://localhost:5000/getVisual/register/confirm-email/${random}`
+    const registerLink =  `http://localhost:5000/getVisual/signup/confirm-email/${random}`
 
     // make and save a cookie
     cookieToken(req, res, 'registerToken',
         registerToken, 24 * 60 * 60 * 1000,
-        '/getVisual/register/confirm-email');
+        '/getVisual/signup/confirm-email');
 
 
     sendEmail(

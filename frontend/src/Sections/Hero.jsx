@@ -19,7 +19,7 @@ export default function Hero() {
         <h1>اطلق العنان لإمكانياتك</h1>
         <p>
         <span className="highlighted">getVisual</span> هل أنت مصمم جرافيك موهوب؟ انضم الى
-        <br />
+       
         وأضف نجمة ابداعك إلى سماء التصميم ! توفر لك هذه
         المنصة فرصة رائعة لعرض  مهارتك وفنك، 
         و ايضا توفر الفرصة لأصحاب الأعمال العثور على مصممين محترفين 
@@ -36,7 +36,7 @@ export default function Hero() {
     />
     </Link>
   ) : (
-    <Link to={`/getVisual/users/${currentUser.username}/post-service`}>
+    <Link to={`/getVisual/users/${currentUser.username}/post-package`}>
     <ButtonCTA
       class='pri-cta cta'
       name='نشر خدمة'

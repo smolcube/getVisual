@@ -66,7 +66,7 @@ const handleSubmit= async (e) =>{
 };
 
   return (
-    <>
+    <div className='adminLogin'>
     <h1>Admin's Log</h1>
       <form 
         className="login-form" 
@@ -101,7 +101,7 @@ const handleSubmit= async (e) =>{
       <span>
           {input.errors}
       </span>
-      </>
+      </div>
     );
   };
 

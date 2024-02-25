@@ -9,7 +9,6 @@ import ButtonCTA from '../Components/ButtonCTA';
 import ButtonIcon from '../Components/ButtonIcon';
 
 import newRequest from '../Utils/newRequest.js';
-import { FaEye } from 'react-icons/fa';
 
 
 export default function Register() {
@@ -51,6 +50,7 @@ const handleSubmit= async (e) =>{
       username : input.username,
       email : input.email,
       password : input.password,
+      accType: input.accType,
     });
   
     const expiresAt = Date.now() + (2 * 60 * 1000);
@@ -84,7 +84,8 @@ const handleSubmit= async (e) =>{
   return (
     <div className='container'>
       <div className="container__column1">
-        <h1>Create <br />Account</h1>
+        <h1>انشـئ حساب</h1>
+        <br />
       <form
          className='container__column1--form'
          action="/signup" 
@@ -100,7 +101,7 @@ const handleSubmit= async (e) =>{
         label="Username"
         type="text"
         id="username" //name
-        placeholder="Username"
+        placeholder="الاسم"
         value={input.username}
         onChange={handleChange}
       />
@@ -114,7 +115,7 @@ const handleSubmit= async (e) =>{
         label="Email"
         type="text"
         id="email" //name
-        placeholder="Email"
+        placeholder="البريد الإلكتروني"
         value={input.email}
         onChange={handleChange}
       />
@@ -128,14 +129,14 @@ const handleSubmit= async (e) =>{
             label="Password"
             type={showPassword ? 'text' : 'password'}
             id="password" //name
-            placeholder="Password"
+            placeholder="كلمة المرور"
             value={input.password}
             onChange={handleChange}
           />
         <ButtonIcon
           id="show-pass"
           onclick={togglePasswordVisibility}
-          icon={<FaEye/>}
+          ionicon="eye-outline"
         />
         </div>
         <div className="form-messages">
@@ -153,7 +154,7 @@ const handleSubmit= async (e) =>{
                 onChange={handleChange}
                 checked={input.accType === 'designer'}
                 htmlFor="designer"
-                label='Designer'
+                label='مُـــصمم'
               />
               </div>
               <div className='radio-item'>
@@ -164,7 +165,7 @@ const handleSubmit= async (e) =>{
                 onChange={handleChange}
                 checked={input.accType === 'customer'}
                 htmlFor="customer"
-                label='Customer'
+                label='زبـــون'
               />
               </div>
           </div>
@@ -172,14 +173,14 @@ const handleSubmit= async (e) =>{
         <ButtonCTA
         class="form-btn pri-cta cta"
         type="submit"
-        name="Sign up"
+        name="أنشــئ حساب"
         />
       </form>
       <span className='span-mid'>
-        Already have an account?
+        لديــك حساب؟
       </span> <br />
       <span className='span-small'>
-        <a href="/getVisual/login">Login here.</a>
+        <a href="/getVisual/login">.ســجّـل الدخول</a>
       </span>
       </div>
 

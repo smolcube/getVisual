@@ -3,16 +3,19 @@ import { NavLink } from 'react-router-dom';
 
 const states = [
   {
-    state: "Pending",
-    id: "pending"
+    state: "معلقة",
+    id: "pending",
+    total: "159"
   },
   {
-    state: "Rejected",
-    id: "rejected"
+    state: "مرفوضة",
+    id: "rejected",
+    total: "22"
   },
   {
-    state: "Approved",
-    id: "approved"
+    state: "مقبولة",
+    id: "approved",
+    total: "371"
   },
 ];
 
@@ -20,10 +23,10 @@ export default function Dashboard() {
   return (
     <div className='dashboard'>
       <div className="dashboard__main">
-        <h1>Welcome to Dashboard</h1>
-        <p>click on any of the cards below</p>
-        <div className='dashboard__main--cards'>
+        <h1>لوحة التحكم</h1>
+        <p>انقر على اي من البطاقات</p>
 
+        <div className='dashboard__main--cards'>
           {states.map((statie, index) => ( 
             <NavLink
               key={index}
@@ -31,6 +34,8 @@ export default function Dashboard() {
             >
               <div className="card" id={statie.id}>
                 <h3>{statie.state}</h3>
+                <br />
+                <h3>#{statie.total}</h3>
               </div>
             </NavLink>
           ))}

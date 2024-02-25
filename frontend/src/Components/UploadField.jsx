@@ -18,7 +18,6 @@ export default function UploadField(props) {
         value={props.value}
         name={props.name}
         onChange={props.onChange}
-        multiple={props.multiple} // Add multiple prop for file input
       />
     </div>
   );

@@ -7,14 +7,15 @@
 @use '../utils' as *;
 
 .container{
-  margin: rem(70) rem(30);
+  margin: rem(150) rem(30);
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 6px;
 
+
   //large
   @include min-width(medium){
-  margin: rem(100) rem(120);
+  margin: rem(150) rem(120);
   }
   
 &__column1{
@@ -24,7 +25,7 @@
     margin-bottom: rem(16);
   }
   h1{
-    text-align: left;
+    text-align: right;
 
   }
   text-align: center;
@@ -63,11 +64,11 @@
 
     .form-radio{
       display: flex;
-      gap: 50%;
+      gap: 65%;
       font-size: clamp(0.625rem, 0.405rem + 0.939vw, 1.25rem);
       color: $blue;
       @include medium-and-smaller{
-        gap: 30%;
+        gap: 50%;
       }
       input{
         margin-right: 5px;

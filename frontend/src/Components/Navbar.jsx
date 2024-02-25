@@ -3,17 +3,21 @@ import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import { Link, useLocation } from 'react-router-dom';
 
 // Icons // Media
-import SearchBanner from "./SearchBanner";
-import UserMenu from './UserMenu';
+import small from '../assets/nav-logo-small.svg';
+import wide from '../assets/nav-logo-wide.svg';
+
 
 // Pages // components
 import Login from '../Pages/Login';
 import ButtonCTA from "./ButtonCTA";
+import SearchBanner from "./SearchBanner";
+import UserMenu from './UserMenu';
 
 
 export default function Navbar() {
   const location = useLocation();
   const isRootRoute = location.pathname === '/getVisual';
+  const isDash = location.pathname === '/getVisual/dashboard/login' || "/getVisual/dashboard/main" || "/getVisual/dashboard/main/pending"|| "/getVisual/dashboard/main/approved"|| "/getVisual/dashboard/main/rejected" ;
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const isLoggedIn = !!currentUser; // Check if a user is logged in
@@ -58,8 +62,8 @@ export default function Navbar() {
       <nav className="navbar">
       <a href='/getVisual'>
         <img
-        src={process.env.PUBLIC_URL + '../assets/nav-logo-wide.svg'}
-        srcSet={`${process.env.PUBLIC_URL + '../assets/nav-logo-small.svg'} 600w, ${process.env.PUBLIC_URL + '../assets/nav-logo-wide.svg'} 1150w`}
+        src={wide}
+        srcSet={`${small} 600w, ${wide} 1150w`}
         sizes='(max-width: 1150px) 100vw, 1150px'
         alt='Logo'
         />
@@ -160,15 +164,17 @@ export default function Navbar() {
         </button>
           <span className='span-small'>{currentUser.username}</span>
         </div>
-          ) : (
+        ) : (
+          !isDash && ( // Only show login button if not in dashboard
             <Link to='/getVisual/login'>
               <ButtonCTA
                 class='sec-cta cta'
                 function={Login}
-                name='تسجيل دخول'
+                name='تسجيل الدخول'
               />
             </Link>
-          )}
+          )
+        )}
           <SearchBanner/>
 
         <button

@@ -1,34 +1,51 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+
+import ButtonIcon from '../Components/ButtonIcon';
+
 
 // Sample data representing pending posts
 const pendingPosts = [
   {
     id: 1,
-    title: 'Post 1 Title',
-    username: '@User1',
+    title: 'عنوان المنشور 1',
+    username: '@user1',
   },
   {
     id: 2,
-    title: 'Post 2 Title',
-    username: '@User2',
+    title: 'عنوان المنشور 2',
+    username: '@user2',
   },
   {
     id: 3,
-    title: 'Post 3 Title',
-    username: '@User3',
+    title: 'عنوان المنشور 3',
+    username: '@user3',
   },
 ];
 
 export default function DashTables() {
   const { state } = useParams();
+  
+  // Translate state based on its value
+  let translatedState;
+  if (state === "Approved") {
+    translatedState = "المقبولة";
+  } else if (state === "Rejected"){
+    translatedState = "المرفوضة";
+  } else {
+    translatedState = "المعلقة";
+  }
+
+  const location = useLocation();
+  const isPending = location.pathname === '/getVisual/dashboard/main/pending';
+
 
   return (
     <div className="posts-container">
       <div className="posts-container__table">
       <div className="posts-container__table--title">
-        <h1>{state} Posts</h1>
-        <p>Keeping track of unpublished gems to shine.</p>
+        <h1> المنشورات {translatedState}</h1>
+        <p>سِــجل التفاصيل</p>
       </div>
         <div className="posts-container__table--wrapper">
         {/* Map through pendingPosts and display username and title in separate columns */}
@@ -40,10 +57,24 @@ export default function DashTables() {
             <div className="posts-container__table--column2">
               {post.title}
             </div>
+            {isPending ? (
             <div className="posts-container__table--column3">
-              <button>accept</button>
-              <button>delete</button>
+              <ButtonIcon
+                id='acceptBtn'
+                //onclick = {}
+                ionicon="checkmark-circle-outline"
+              />              
+              <ButtonIcon
+                id='acceptBtn'
+                //onclick = {}
+                ionicon="trash-outline"
+              />
+            </div> ) : ( 
+            <div>
+              <span>12/4/2023 </span>
+              <span>@Admin1</span>
             </div>
+            )}
           </>
         ))}
           </div>

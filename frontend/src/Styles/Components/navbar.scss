@@ -29,6 +29,7 @@
   &__list{
     display: flex;
     align-items: baseline;
+    flex-direction: row-reverse;
     gap: rem(30);
 
     @include min-width(small){

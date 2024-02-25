@@ -1,6 +1,9 @@
 // LoginForm.scss
+
+.adminLogin{
+  padding-block: 150px;
 h1{
-    text-align: center;
+  text-align: center;
 }
 .login-form {
     max-width: 300px;
@@ -43,4 +46,4 @@ h1{
       }
     }
   }
-  
+  }

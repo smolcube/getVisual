@@ -1,0 +1,173 @@
+<!-- 
+بما انه لا يمكن ارسال عناصر رياكت لنود
+ejs نقوم باستخدام 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+      /* General styles */
+      body {
+          font-family: 'Montserrat', system-ui, 'Segoe UI', 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
+          background-color: #f0f2f5;
+          margin: 0;
+          padding: 0;
+      }
+
+      .reset {
+          display: grid;
+          padding: 9.375rem 6.25rem;
+          height: 100%;
+          background-color: #f0f2f5;
+          justify-content: center;
+          text-align: center;
+      }
+
+      .reset__container {
+          width: 75vw;
+          height: fit-content;
+          background-color: white;
+          border-radius: 45px;
+          padding-inline: 3.75rem;
+          padding-block: 2.5rem;
+      }
+
+      .reset__container--img {
+          margin-bottom: 1.625rem;
+      }
+
+      .reset__container--title {
+          margin-bottom: 1.625rem;
+      }
+
+      .reset__container--content {
+          margin-bottom: 1.5625rem;
+          color: #78a0c0;
+      }
+
+      .reset__container--form {
+          display: flex;
+          flex-direction: column;
+          place-items: center;
+      }
+      .reset__container--form .textField-box {
+    padding-inline: 0.9375rem; /* Equivalent to rem(15) */
+    width: clamp(10.688rem, 3.447rem + 30.892vw, 31.25rem);
+    height: clamp(1.25rem, 0.59rem + 2.817vw, 3.125rem);
+    border: 2px solid #78a0c0; /* Assuming $light-blue is defined as #78a0c0 */
+    border-radius: 45px;
+    display: flex;
+    place-items: center;
+}
+
+/* Small screen adjustments */
+@media screen and (max-width: 600px) {
+    .reset__container--form .textField-box {
+        padding-inline: 0.5625rem; /* Equivalent to rem(9) */
+    }
+}
+
+/* Medium screen adjustments */
+@media screen and (min-width: 601px) {
+    .reset__container--form .textField-box {
+        padding-inline: 1.5625rem; /* Equivalent to rem(25) */
+    }
+}
+      .reset__container--form-feild {
+          margin-bottom: 1.875rem;
+      }
+
+      .reset__container--form button {
+          margin-bottom: 1.875rem;
+      }
+
+      .reset__container--form .success {
+          color: green !important;
+      }
+
+      .reset__container--form .error {
+          color: red !important;
+      }
+
+    .icn-btn {
+    background: none;
+    border: 0;
+    border-radius: 50%;
+    padding: 2px 3px;
+  }
+
+  .icn-btn:hover {
+    background-color: #BABDC7;
+  }
+  </style>
+    
+</head>
+<body>
+<div class="reset">
+  <div class="reset__container">
+      <h1 class="reset__container--title">اعادة تعيين كلمة المرور</h1>
+      <p class="reset__container--content">من فضلك ادخل كلمة مرور جديدة</p>
+      <form action="" method="POST" class="reset__container--form">
+
+        
+          <div class="reset__container--form-feild input-field">
+              <div class="textField-box">
+                  <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="ادخل كلمة مرور جديدة" 
+                  />
+                  <button 
+                    id="show-pass" 
+                    onclick="togglePasswordVisibility('password')" 
+                    class="buttonIcon" 
+                    type="button">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </button>
+              </div>
+              <br />
+              <div class="textField-box">
+                  <input 
+                    type="password" 
+                    id="rePassword" 
+                    name="rePassword" 
+                    placeholder="ادخل كلمة المرور الجديدة مجددا" 
+                  />
+                  <button 
+                    id="show-pass" 
+                    onclick="togglePasswordVisibility('rePassword')" 
+                    class="buttonIcon" type="button">Show Password
+                  </button>
+              </div>
+          </div>
+          <button class="pri-cta cta" type="submit">تعيين كلمة المرور</button>
+          <br />
+      </form>
+  </div>
+</div>
+
+
+<script>
+  function togglePasswordVisibility(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      const showPassButton = document.getElementById(`show-${inputId}`);
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                showPassButton.textContent = 'Hide Password';
+            } else {
+                passwordInput.type = 'password';
+                showPassButton.textContent = 'Show Password';
+            }
+        }
+    </script>
+    
+</body>
+</html>
+
