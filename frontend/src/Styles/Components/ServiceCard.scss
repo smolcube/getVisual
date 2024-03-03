@@ -1,0 +1,63 @@
+@use '../utils' as *;
+
+
+  
+.service {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .service-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .service-details {
+    margin-top: 10px;
+    &__links{
+      padding: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  
+  .service-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 5px;
+
+  }
+  
+  .service-rating {
+    font-size: 14px;
+    color: gold;
+    margin-bottom: 5px;
+    padding: 5px;
+
+  }
+  
+  .service-rating.starred {
+    color: red;
+  }
+  
+  .service-description {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 5px;
+    padding: 5px;
+
+
+  }
+  
+  .service-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #4c4c4c;
+    background-color: #f2f2f2;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  

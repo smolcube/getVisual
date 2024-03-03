@@ -1,0 +1,104 @@
+//phone first
+
+@use '../utils' as *;
+
+.categoryDets{
+    padding-block: rem(75) rem(100);
+      
+      @media screen and (min-width: 601px) {
+        padding-block: rem(100);
+      }
+      @include min-width(medium){
+        padding-block: rem(150);
+        padding-inline: rem(120);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+    &__left-column{
+        width: fit-content;
+        padding-inline-end: rem(140);
+        margin-block-end: rem(30);
+        border-right: 2px solid $blue-accent;
+        &--card{
+            @media screen and (min-width: 601px) {
+                display: flex;
+            }
+
+            @include min-width(medium){
+                flex-direction: column;
+                width: min-content;
+                border-radius: 30px 30px 0 0;
+
+            }
+            img{
+                width: 100vw;
+
+                @media screen and (min-width: 601px) {
+                    max-width: rem(400);
+                    border-radius: 0 20px 0 0;
+                }
+                @include min-width(medium){
+                    border-radius: 30px 30px 0 0;
+                    box-shadow: 0px 2px 9px 1px  $grey-accent;
+
+                }
+            }
+            .paragraph{
+                @include min-width(medium){
+                border-radius:  0 0 30px 30px;
+                box-shadow: 0px 2px 9px 1px  $grey-accent;
+                }
+            p{
+              padding-inline: rem(20);  
+              margin-block-start: rem(30);
+            }}
+        }
+    }
+
+    &__right-column{
+        padding-inline: rem(30);
+
+        &--services{
+            display: grid;
+
+            @media screen and (min-width: 601px) {
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            }
+
+            @include min-width(medium){
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+/*
+.categoryDets{
+    padding-block: 75px 100px;
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    
+    @include min-width(medium){
+    }
+
+.left-column{
+    padding: 0;
+    height: fit-content;
+
+    .card{
+        display: flex;
+        padding-block-end: rem(30);
+        img{
+            margin-inline-end: 20px;
+            width: 200px;
+            flex-direction: row-reverse;
+            border-radius: 0 20px 0 0;
+        }
+        p{
+            padding-block-start: rem(20);
+        }
+    }
+}
+}*/

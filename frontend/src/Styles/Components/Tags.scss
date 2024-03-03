@@ -1,0 +1,12 @@
+@use "../utils/" as *;
+
+.tags{
+    display: grid;
+    grid-template-columns: repeat(2, 140px);
+    grid-template-rows: repeat(2, 30px);
+
+.tag-item{
+    background-color: $light-blue;
+    border-radius: 20px;
+}
+}

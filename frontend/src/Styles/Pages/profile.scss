@@ -1,0 +1,82 @@
+/* Profile.css */
+
+.profile {
+    padding-block: 100px;
+    display: flex;
+    place-items: center;
+  }
+  
+  .left-column {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    place-items: center ;
+    margin-inline: auto;
+    flex: 1;
+  }
+  
+  .right-column {
+    flex: 2;
+  }
+  
+  .profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  .icon {
+    font-size: 14px;
+    color: rgb(17, 16, 16);
+    margin-top: 5px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid gray;
+    margin-top: 20px;
+  }
+  
+  .button {
+    background-color: rgb(243, 243, 57);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    margin-top: 20px;
+  }
+
+  /* إضافة تعديلات على العرض عند حجم الشاشة الصغيرة */
+  @media (max-width: 768px) {
+    .profile {
+      flex-direction: column;
+    }
+  
+    .left-column,
+    .right-column {
+      flex: 1;
+    }
+  
+    .services {
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+    }
+  
+   /* .username {
+      font-size: 18px;
+    }
+  */
+    .profile-image img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  

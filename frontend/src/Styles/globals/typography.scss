@@ -117,3 +117,7 @@ a{
 input::placeholder {
     font-size: clamp(0.875rem, 0.743rem + 0.563vw, 1.25rem); 
 }
+
+.catgeoryDesc{
+    font-size: clamp(0.938rem, 0.827rem + 0.469vw, 1.25rem);
+}

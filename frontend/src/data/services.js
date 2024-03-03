@@ -18,11 +18,14 @@ import uiDesignImg from './categories/uiDesignImg.jpeg'
 import packagingDesignImg from './categories/packaging.jpeg';
 import motionImg from './categories/motionImg.jpeg';
 
+// phone Images
+import logoDesignPhone from './categories/logo-design-phone.png'
 
 // Define an array of category data with icon, alt, and name
   const services = [
     { icon: logoDesign,
       img: logoDesignImg,
+      phone: logoDesignPhone,
       for:'Skin care line',
       alt: 'Logo Design', 
       name: 'تصميم شعار',

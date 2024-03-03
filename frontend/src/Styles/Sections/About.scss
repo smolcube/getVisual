@@ -19,7 +19,7 @@
   }
 
     &--tile1 {
-      .categ::before {
+      .categ::after {
         content: '+20';
         margin-inline-end: 10px;
         font-size: clamp(1.875rem, 0.775rem + 4.695vw, 5rem);
