@@ -175,7 +175,7 @@ export default function Navbar() {
             </Link>
           )
         )}
-          <SearchBanner/>
+          {!isDash && <SearchBanner />}
 
         <button
           className='navbar__buttons--menu icn-btn'

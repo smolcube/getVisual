@@ -1,82 +1,65 @@
-/* Profile.css */
+/* Profile.scss */
+@use '../utils' as *;
 
 .profile {
-    padding-block: 100px;
-    display: flex;
-    place-items: center;
-  }
-  
-  .left-column {
-    padding: 20px;
+  padding-block: rem(75) rem(100);
+      
+      @media screen and (min-width: 601px) {
+        padding-block: rem(100);
+      }
+      @include min-width(medium){
+        padding-block: rem(150);
+        padding-inline: rem(120);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+  &__left-column {
+    direction: rtl;
     display: flex;
     flex-direction: column;
-    place-items: center ;
-    margin-inline: auto;
-    flex: 1;
-  }
+    place-items: center;
+    width: fit-content;
+    padding-inline-start: rem(140);
+    margin-block-end: rem(30);
+    border-right: 2px solid $blue-accent;
   
-  .right-column {
-    flex: 2;
+    img{
+      width: rem(200);
+      padding-bottom: rem(15);
+    }
+
+    button{
+      margin-block: rem(30) ;
+    }
   }
-  
-  .profile-image img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+  &__joined-on{
+    width: 94%;
+    padding-block-end: 15px;
+    margin-block-end: 15px;
+    text-align: center;
+    border-bottom: solid $light-blue 2px;
   }
-  
-  .icon {
-    font-size: 14px;
-    color: rgb(17, 16, 16);
-    margin-top: 5px;
+ 
+  &__content{
+    font-size: rem(19);
   }
 
-  hr {
-    border: none;
-    border-top: 1px solid gray;
-    margin-top: 20px;
-  }
-  
-  .button {
-    background-color: rgb(243, 243, 57);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  .services {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-    margin-top: 20px;
-  }
+  &__right-column{
+    padding-inline: rem(30);
 
-  /* إضافة تعديلات على العرض عند حجم الشاشة الصغيرة */
-  @media (max-width: 768px) {
-    .profile {
-      flex-direction: column;
+    &--services{
+        display: grid;
+
+        @media screen and (min-width: 601px) {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        }
+
+        @include min-width(medium){
+            grid-template-columns: 1fr 1fr;
+        }
     }
-  
-    .left-column,
-    .right-column {
-      flex: 1;
-    }
-  
-    .services {
-      grid-template-columns: 1fr;
-      grid-gap: 20px;
-    }
-  
-   /* .username {
-      font-size: 18px;
-    }
-  */
-    .profile-image img {
-      width: 150px;
-      height: 150px;
-    }
-  }
-  
+}
+
+}

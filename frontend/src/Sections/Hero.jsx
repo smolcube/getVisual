@@ -12,6 +12,8 @@ const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 const isLoggedIn = !!currentUser; // Check if a user is logged in
 
 export default function Hero() {
+  const acctype = currentUser?.acctype;
+
   return (
     <header className="hero">
     <div className="hero-logo"> {/* This div contains the background image and the text */}
@@ -39,7 +41,7 @@ export default function Hero() {
     <Link to={`/getVisual/users/${currentUser.username}/post-package`}>
     <ButtonCTA
       class='pri-cta cta'
-      name='نشر خدمة'
+      name={acctype === 'customer' ? 'تصفح' : 'نشر خدمة'}
     />
     </Link>
     )}

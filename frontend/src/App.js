@@ -59,6 +59,7 @@ function App() {
         <Route path="/getVisual/dashboard/login" element={<AdminLogin />} />
         <Route path="/getVisual/dashboard/main" element={<Dashboard />} />
         <Route path="/getVisual/dashboard/main/:state" element={<DashTables />} />
+        {/*<Route path="/getVisual/dashboard/main/:package-name" element={<Package />} />*/}
 
       {/* Protect the dashboard route using Auth component 
         <Route

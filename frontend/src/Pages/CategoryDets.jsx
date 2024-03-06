@@ -4,6 +4,12 @@ import { useParams } from "react-router-dom";
 import services from "../data/services";
 import ServiceCard from "../Components/ServiceCard";
 
+//images
+import servicesImg2 from '../assets/img2.png';
+import servicesImg3 from '../assets/img3.png';
+import servicesImg4 from '../assets/img4.png';
+
+
 export default function CategoryDets() {
   const { categoryName } = useParams();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -60,10 +66,15 @@ export default function CategoryDets() {
 
       <div className="categoryDets__right-column">
         <div className="categoryDets__right-column--services">
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
+          <ServiceCard 
+            servicesImg={servicesImg2}
+          />
+          <ServiceCard 
+            servicesImg={servicesImg3}
+          />
+          <ServiceCard 
+            servicesImg={servicesImg4}
+          />
         </div>
       </div>
     </div>

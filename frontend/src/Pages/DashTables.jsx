@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 
 import ButtonIcon from '../Components/ButtonIcon';
 
@@ -48,14 +48,16 @@ export default function DashTables() {
         <p>سِــجل التفاصيل</p>
       </div>
         <div className="posts-container__table--wrapper">
-        {/* Map through pendingPosts and display username and title in separate columns */}
+
         {pendingPosts.map(post => (
           <>
             <div className="posts-container__table--column1">
               {post.username}
             </div>
             <div className="posts-container__table--column2">
+              <Link to={`/getVisual/dashboard/main/:${post.name}`}>
               {post.title}
+              </Link>
             </div>
             {isPending ? (
             <div className="posts-container__table--column3">

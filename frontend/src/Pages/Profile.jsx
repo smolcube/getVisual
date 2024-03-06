@@ -3,33 +3,47 @@ import React from 'react';
 import ButtonCTA from '../Components/ButtonCTA';
 import ServiceCard from '../Components/ServiceCard';
 
+//images 
+import user from '../assets/user.svg';
+import servicesImg2 from '../assets/logoimg1.png';
+import servicesImg3 from '../assets/logoimg2.png';
+import servicesImg4 from '../assets/logoimg3.png';
+
 const Profile = () => {
   return (
     <div className="profile">
-      <div className="left-column">
-        <div className="profile-image">
-          <img src="https://i.imgur.com/tSzNIJH.jpeg" alt="Profile" />
-        </div>
-        <span className="username">@Username</span>
-        <span className="faded">Joined on Feb 2023</span>
-        <hr />
-        <div className="extra-info">
-          <div className="icon">DESCRIPTION</div>
-          <p className="content">
-            Morem ipsum dolor sit amet, consectetur adipiscing elit.
+      <div className="profile__left-column">
+
+          <img
+            className='profile__image'
+            src={user} alt="Profile" 
+          />
+
+        <span className="profile__username">@Username</span>
+        <span className="profile__joined-on faded">انضم في فبراير 2023</span>
+        
+        <div className="profile__extra-info">
+          <p className="content">الوصف</p>
+          <p className="profile__content">
+            مرحبــا انا مصمم جرافيكس مختص بتصميم الشعارات.
           </p>
         </div>
         <ButtonCTA 
           class='pri-cta cta'
-          name='Contact me'
+          name='تواصل معي'
         />
       </div>
-      <div className="right-column">
-        <div className="services">
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
+      <div className="profile__right-column">
+        <div className="profile__right-column--services">
+          <ServiceCard 
+            servicesImg={servicesImg2}
+          />
+          <ServiceCard 
+            servicesImg={servicesImg3}
+          />
+          <ServiceCard 
+            servicesImg={servicesImg4}
+          />
         </div>
       </div>
     </div>

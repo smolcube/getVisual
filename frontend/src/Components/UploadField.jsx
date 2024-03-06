@@ -5,13 +5,14 @@ export default function UploadField(props) {
   const labelClassName = `upload-field-label ${props.label_additionalClassName}`;
 
   return (
-    <div>
+    <div className={props.divClass}>
       <label htmlFor={props.id} className={labelClassName}>
         {props.label}
       </label>
 
       <input
         className={inputClassName}
+        className2={props.className2}
         type={props.type}
         id={props.id}
         placeholder={props.placeholder}

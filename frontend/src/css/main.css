@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .cta {
   width: max-content;
   padding-inline: 0.625rem;
@@ -245,6 +244,10 @@ input[type=radio] {
   display: flex;
   justify-content: space-between;
 }
+.service-details__links--user {
+  display: flex;
+  width: 157px;
+}
 
 .service-name {
   font-size: 16px;
@@ -278,6 +281,46 @@ input[type=radio] {
   background-color: #f2f2f2;
   padding: 5px;
   border-radius: 5px;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #E3ECF3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  border-radius: 6px;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: hsl(54, 100%, 65%); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: hsl(54, 100%, 65%); /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }
 
 .tags {
@@ -1078,83 +1121,68 @@ ion-icon {
   font-weight: 400;
 }
 
-/* Profile.css */
+/* Profile.scss */
 .profile {
-  padding-block: 100px;
-  display: flex;
-  place-items: center;
+  padding-block: 4.6875rem 6.25rem;
 }
-
-.left-column {
-  padding: 20px;
+@media screen and (min-width: 601px) {
+  .profile {
+    padding-block: 6.25rem;
+  }
+}
+@media (min-width: 71.875em) {
+  .profile {
+    padding-block: 9.375rem;
+    padding-inline: 7.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.profile__left-column {
+  direction: rtl;
   display: flex;
   flex-direction: column;
   place-items: center;
-  margin-inline: auto;
-  flex: 1;
+  width: fit-content;
+  padding-inline-start: 8.75rem;
+  margin-block-end: 1.875rem;
+  border-right: 2px solid #8080FF;
 }
-
-.right-column {
-  flex: 2;
+.profile__left-column img {
+  width: 12.5rem;
+  padding-bottom: 0.9375rem;
 }
-
-.profile-image img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+.profile__left-column button {
+  margin-block: 1.875rem;
 }
-
-.icon {
-  font-size: 14px;
-  color: rgb(17, 16, 16);
-  margin-top: 5px;
+.profile__joined-on {
+  width: 94%;
+  padding-block-end: 15px;
+  margin-block-end: 15px;
+  text-align: center;
+  border-bottom: solid #7890A8 2px;
 }
-
-hr {
-  border: none;
-  border-top: 1px solid gray;
-  margin-top: 20px;
+.profile__content {
+  font-size: 1.1875rem;
 }
-
-.button {
-  background-color: rgb(243, 243, 57);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
+.profile__right-column {
+  padding-inline: 1.875rem;
 }
-
-.services {
+.profile__right-column--services {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-  margin-top: 20px;
+}
+@media screen and (min-width: 601px) {
+  .profile__right-column--services {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+@media (min-width: 71.875em) {
+  .profile__right-column--services {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-/* إضافة تعديلات على العرض عند حجم الشاشة الصغيرة */
-@media (max-width: 768px) {
-  .profile {
-    flex-direction: column;
-  }
-  .left-column,
-  .right-column {
-    flex: 1;
-  }
-  .services {
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
-  }
-  /* .username {
-      font-size: 18px;
-    }
-  */
-  .profile-image img {
-    width: 150px;
-    height: 150px;
-  }
-}
 .hero {
   margin-top: 5.75rem;
   padding-bottom: 6.25rem;

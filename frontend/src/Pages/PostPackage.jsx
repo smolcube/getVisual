@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Components
@@ -19,7 +19,7 @@ export default function PostPackage() {
     name: '',
     desc: '',
     tags: '',
-    price: '',
+    price: 10, 
     category: ''
   });
   const [error, setError] = useState('');
@@ -78,12 +78,10 @@ export default function PostPackage() {
       <div className="postService__upload">
         <h3>يرجى ملء هذه الحقول بعناية</h3>
 
-
         <form
           className='postService__upload--form'
           onSubmit={handleSubmit}
         >
-
           <UploadField
             label="description"
             type="text"
@@ -100,14 +98,21 @@ export default function PostPackage() {
             name='name'
             onChange={handleChange}
           />
-          <UploadField
-            label="price"
-            type="range"
-            id="price"
-            name='price'
-            onChange={handleChange}
-          />
 
+          <div className="slidecontainer">
+          <span className='span-mid'> price {input.price}</span>
+            <input
+              type="range"
+              min={10}
+              max={100}
+              value={input.price}
+              className="slider"
+              id="price"
+              name="price"
+              onChange={e => setInput(prevInput => ({ ...prevInput, price: parseInt(e.target.value) }))} // Update price state when slider changes
+            />
+          </div>
+          
           {/* Dropdown input for category */}
           <Dropdown
             label="category"
@@ -124,8 +129,6 @@ export default function PostPackage() {
             onChange={(value) => setInput(prevInput => ({ ...prevInput, tags: value }))}
             name='tags'
           />
-
-
           <div className='file upload-field-input'>
             <input
               type="file"
@@ -136,10 +139,8 @@ export default function PostPackage() {
             <label htmlFor="file" className='label'>Image</label>
             <label htmlFor="file">+</label>
           </div>
-
           <ButtonCTA class="pri-cta cta" name="إرسال" />
-        {error && <div className="error-message">{error}</div>}
-
+          {error && <div className="error-message">{error}</div>}
         </form>
       </div>
     </div>
