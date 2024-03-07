@@ -5,7 +5,7 @@ export default function ButtonIcon(props) {
     <button
       className={`icn-btn ${props.class}`}
       id={props.id}
-      onClick={props.onclick}>
+      onClick={props.onClick}>
         
       <ion-icon name={props.ionicon} alt={props.alt}></ion-icon>
       {/*<ion-icon name={props.ionicon} alt={props.alt}></ion-icon>*/}
@@ -13,6 +13,3 @@ export default function ButtonIcon(props) {
     </button>
   );
 }
-/*
-
-*/

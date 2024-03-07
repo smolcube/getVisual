@@ -1,0 +1,33 @@
+// Package.scss
+@use '../utils' as *;
+ 
+.package{
+    background-color: $background;
+    padding-inline: rem(76);
+    padding-block: rem(120) rem(100);
+
+
+    &__container{
+        background-color: $white;
+        border-radius: 25px;
+        width: 1300px;
+        height: 600px;
+
+        display: flex;
+        place-items: center;
+        justify-content: center;
+        gap: rem(50);
+
+        &--image{
+            img{
+            width: 500px;
+            height: 300px;
+            border-radius: 25px;
+       } }
+       &--info{
+        p{
+            font-size: clamp(0.625rem, 0.405rem + 0.939vw, 1.25rem);
+        }
+       }
+    }
+}

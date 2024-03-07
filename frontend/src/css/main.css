@@ -1121,6 +1121,86 @@ ion-icon {
   font-weight: 400;
 }
 
+.package {
+  background-color: #f0f2f5;
+  padding-inline: 4.75rem;
+  padding-block: 7.5rem 6.25rem;
+}
+.package__container {
+  background-color: #ffffff;
+  border-radius: 25px;
+  width: 1300px;
+  height: 600px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  gap: 3.125rem;
+}
+.package__container--image img {
+  width: 500px;
+  height: 300px;
+  border-radius: 25px;
+}
+.package__container--info p {
+  font-size: clamp(0.625rem, 0.405rem + 0.939vw, 1.25rem);
+}
+
+.packageSlide {
+  background-color: #f0f2f5;
+  padding-inline: 4.75rem;
+  padding-block: 7.5rem 6.25rem;
+}
+.packageSlide__container {
+  width: 1300px;
+  height: 600px;
+  background-color: #ffffff;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.packageSlide__container--slider {
+  margin-bottom: 100px;
+  position: relative;
+  height: 300px;
+}
+.packageSlide__container--slider img {
+  width: auto;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.packageSlide__container__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  color: #fff;
+  font-size: 24px;
+}
+.packageSlide__container__button--prev {
+  left: 10px;
+}
+.packageSlide__container__button--next {
+  right: 10px;
+}
+.packageSlide__container--images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.packageSlide__container--images img {
+  width: 130px;
+  height: 90px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
 /* Profile.scss */
 .profile {
   padding-block: 4.6875rem 6.25rem;

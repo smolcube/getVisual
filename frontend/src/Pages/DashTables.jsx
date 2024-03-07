@@ -28,9 +28,9 @@ export default function DashTables() {
   
   // Translate state based on its value
   let translatedState;
-  if (state === "Approved") {
+  if (state === "approved") {
     translatedState = "المقبولة";
-  } else if (state === "Rejected"){
+  } else if (state === "rejected"){
     translatedState = "المرفوضة";
   } else {
     translatedState = "المعلقة";
@@ -55,7 +55,7 @@ export default function DashTables() {
               {post.username}
             </div>
             <div className="posts-container__table--column2">
-              <Link to={`/getVisual/dashboard/main/:${post.name}`}>
+              <Link to={`/getVisual/dashboard/main/pending/${post.id}`}>
               {post.title}
               </Link>
             </div>
@@ -65,7 +65,7 @@ export default function DashTables() {
                 id='acceptBtn'
                 //onclick = {}
                 ionicon="checkmark-circle-outline"
-              />              
+              />
               <ButtonIcon
                 id='acceptBtn'
                 //onclick = {}

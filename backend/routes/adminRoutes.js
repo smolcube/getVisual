@@ -11,7 +11,7 @@ const { protect } = require('../middleware/authHandler')
 // Main routes
 router.get('/main', dashboard);
 router.post('/login|signin', adminLogin);
-router.post('/logout');
+
 
 router.get('/:username');
 router.get('/posts');

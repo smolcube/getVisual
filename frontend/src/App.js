@@ -10,6 +10,8 @@ import ForgotPass from './Pages/ForgotPass';
 
 import PostPackage from './Pages/PostPackage';
 import Profile from './Pages/Profile';
+import Package from './Pages/Package';
+import PackageSlide from './Pages/PackageSlide.jsx'
 
 import Hero from './Sections/Hero';
 import About from './Sections/About';
@@ -59,7 +61,8 @@ function App() {
         <Route path="/getVisual/dashboard/login" element={<AdminLogin />} />
         <Route path="/getVisual/dashboard/main" element={<Dashboard />} />
         <Route path="/getVisual/dashboard/main/:state" element={<DashTables />} />
-        {/*<Route path="/getVisual/dashboard/main/:package-name" element={<Package />} />*/}
+        <Route path="/getVisual/dashboard/main/pending/:id" element={<Package />} />
+        <Route path="/getVisual/dashboard/main/pending/:id/image" element={<PackageSlide />} />
 
       {/* Protect the dashboard route using Auth component 
         <Route
