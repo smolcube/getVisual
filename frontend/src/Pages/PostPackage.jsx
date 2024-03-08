@@ -31,6 +31,7 @@ export default function PostPackage() {
     name: '',
     desc: '',
     tags: '',
+    state: false,
     price: 10,
     category: ''
   });
@@ -61,6 +62,7 @@ export default function PostPackage() {
       formData.append('price', input.price);
       formData.append('category', input.category);
       formData.append('tags', input.tags);
+      formData.append('state', input.state); 
       formData.append('file', input.file); // Append the selected file to the form data
   
     console.log(formData);
@@ -81,6 +83,7 @@ export default function PostPackage() {
           name: '',
           desc: '',
           tags: '',
+          state: false,
           price: 10,
           category: ''
         });
@@ -169,6 +172,7 @@ export default function PostPackage() {
               name='file'
               onChange={handleFileChange}
               accept='image/*,video/*'
+              multiple
             />
             <label htmlFor="file" className='label'>Image</label>
             <label htmlFor="file">+</label>

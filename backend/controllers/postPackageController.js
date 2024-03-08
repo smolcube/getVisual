@@ -22,7 +22,7 @@ const upload = multer({
   fileFilter: function(req, file, cb){
     checkFileType(file, cb);
   }
-}).single('file'); // Accepts a single file, using 'file' as the field name
+}).array('file', 10);// Accepts up to 10 files, using 'files' as the field name
 
 // Check File Type
 function checkFileType(file, cb){
@@ -52,7 +52,6 @@ const postPackage = asyncHandler(async (req, res) => {
     if (!authCookie) {
       console.log("authCookie not found");
       return res.status(401).json({ message: 'Unauthorized: Missing token' });
-
     }
 
     // Verify the token and extract user ID
@@ -72,21 +71,22 @@ const postPackage = asyncHandler(async (req, res) => {
       if (err) {
         return res.status(400).json({ message: err }); // Error handling for file upload
       }
-      if (!req.file) { // Check if file is present
-        return res.status(400).json({ message: 'Error: No File Selected!' });
+      if (!req.files || req.files.length === 0) { // Check if files are present
+        return res.status(400).json({ message: 'Error: No Files Selected!' });
       }
 
       try {
         // Extract form data
-        const { name, desc, tags, price, category } = req.body;
-        const imagePath = `uploads/${req.file.filename}`;
+        const { name, desc, tags,state, price, category } = req.body;
+        const imagePaths = req.files.map(file => `uploads/${file.filename}`);
 
         // Create new package instance
         const newPackage = new Package({
           name,
           desc,
-          images: imagePath,
+          images: imagePaths,
           tags: tags.split(','),
+          state,
           user: userId, 
           price,
           category
@@ -109,4 +109,4 @@ const postPackage = asyncHandler(async (req, res) => {
 
 module.exports = {
   postPackage,
-};
+}

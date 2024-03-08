@@ -10,13 +10,17 @@ const packageSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  images: {
-    type: String, 
+  images: [{
+    type: String, // Accept an array of strings for images
     required: true
-  },
+  }],
   tags: {
     type: [String],
     required: true
+  },
+  state: {
+    type: Boolean,
+    default: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
