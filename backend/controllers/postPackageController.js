@@ -57,7 +57,7 @@ const postPackage = asyncHandler(async (req, res) => {
 
     // Verify the token and extract user ID
     const decoded = jwt.verify(authCookie, process.env.JWT_SECRET);
-    const userId = decoded._id;
+    const userId = decoded.id;
 
     console.log(userId)
 

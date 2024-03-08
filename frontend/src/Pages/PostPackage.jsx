@@ -54,16 +54,17 @@ export default function PostPackage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const formData = new FormData();
-      formData.append('description', input.desc);
+      formData.append('desc', input.desc);
       formData.append('name', input.name);
       formData.append('price', input.price);
       formData.append('category', input.category);
       formData.append('tags', input.tags);
       formData.append('file', input.file); // Append the selected file to the form data
   
+    console.log(formData);
+
   // Make the HTTP request using newRequest
   const response = await newRequest.post(`/upload/users/${username}/post-package`, formData, {
     headers: {
@@ -72,7 +73,7 @@ export default function PostPackage() {
   });
   
       // Check if the upload was successful
-      if (response.status === 200) {
+      if (response.status === 201) {
         console.log(response.status);
         setMessage('Upload successful!');
         // Optionally, you can reset the input fields after successful upload
