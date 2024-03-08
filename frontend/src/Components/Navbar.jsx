@@ -26,7 +26,8 @@ export default function Navbar() {
   location.pathname === '/getVisual/dashboard/main/rejected';
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const isLoggedIn = !!currentUser; // Check if a user is logged in
+  const admin = JSON.parse(localStorage.getItem("Admin"));
+  const isLoggedIn = !!currentUser || !!admin; // Check if a user is logged in
 
   // Side Menu
   const [isNavbarHidden, setIsNavbarHidden] = useState(true);
@@ -162,7 +163,7 @@ export default function Navbar() {
           <img src={user} alt="" />
           {userMenu && <UserMenu />}
         </button>
-        <span className='span-small'>{currentUser.username}</span>
+        <span className='span-small'>{currentUser ? currentUser.username : (admin ? admin.username : '')}</span>
         </div>
         ) : (
           !isDash && ( // Only show login button if not in dashboard
