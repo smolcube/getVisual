@@ -10,7 +10,6 @@ import Dropdown from '../Components/Dropdown';
 import ButtonCTA from '../Components/ButtonCTA';
 
 export default function PostPackage() {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser")); 
 
   const categoryOptions = ['تصميم شعار - logo design', 'تصميم هوية - brand design', 'فن الرسوم التوضيحية - illustrations', 'المطبوعات - Printing', 'واحهة وتجربة المستخدم - UI/Ux', 'التعبئة والتغليف - packaging', 'التحريك - motion', 'مواقع التواصل - social media'];
 
@@ -55,8 +54,7 @@ export default function PostPackage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(currentUser.accType);
-    
+
     try {
       const formData = new FormData();
       formData.append('description', input.desc);
