@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 // Icons // Media
 import small from '../assets/nav-logo-small.svg';
 import wide from '../assets/nav-logo-wide.svg';
+import user from '../assets/user.svg';
 
 
 // Pages // components
@@ -17,7 +18,12 @@ import UserMenu from './UserMenu';
 export default function Navbar() {
   const location = useLocation();
   const isRootRoute = location.pathname === '/getVisual';
-  const isDash = location.pathname === '/getVisual/dashboard/login' || "/getVisual/dashboard/main" || "/getVisual/dashboard/main/pending"|| "/getVisual/dashboard/main/approved"|| "/getVisual/dashboard/main/rejected" ;
+  
+  const isDash = location.pathname === '/getVisual/dashboard/login' ||
+  location.pathname === '/getVisual/dashboard/main' ||
+  location.pathname === '/getVisual/dashboard/main/pending' ||
+  location.pathname === '/getVisual/dashboard/main/approved' ||
+  location.pathname === '/getVisual/dashboard/main/rejected';
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const isLoggedIn = !!currentUser; // Check if a user is logged in
@@ -159,7 +165,7 @@ export default function Navbar() {
           className='user icn-btn'
           onClick={toggleUserMenu}
         >
-          <img src={process.env.PUBLIC_URL + '../assets/user.svg'} alt="" />
+          <img src={user} alt="" />
           {userMenu && <UserMenu />}
         </button>
           <span className='span-small'>{currentUser.username}</span>

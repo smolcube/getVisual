@@ -36,7 +36,7 @@ const login = asyncHandler(async (req, res) => {
   // make and save a cookie
   cookieToken(req, res, 'authCookie',
       authToken, 24 * 60 * 60 * 1000,
-      '/profile/:username');
+      '/getVisual');
 
     res.json({
       username: user.username,
@@ -58,7 +58,7 @@ const login = asyncHandler(async (req, res) => {
   // make and save a cookie
   cookieToken(req, res, 'authCookie',
     authToken, 24 * 60 * 60 * 1000,
-    '/');
+    '/getVisual');
 
     res.json({
       username: customer.username,
@@ -97,9 +97,6 @@ const getProfile = asyncHandler(async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
   
- 
-  // res.send(`Username: ${username}`);
-  // res.status(200).json({ message: 'user profile page' });
 
 });
 

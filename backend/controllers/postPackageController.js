@@ -1,26 +1,112 @@
 const asyncHandler = require('express-async-handler');
-const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const multer = require('multer');
+const path = require('path');
+const jwt = require('jsonwebtoken');
 
+// models
+const Package = require('../models/packageModel');
+const User = require('../models/userModel');
+
+// Set The Storage Engine
+const storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function(req, file, cb){
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+// Init Upload
+const upload = multer({
+  storage: storage,
+  limits:{fileSize: 1000000}, // Limit file size to 1MB
+  fileFilter: function(req, file, cb){
+    checkFileType(file, cb);
+  }
+}).single('file'); // Accepts a single file, using 'file' as the field name
+
+// Check File Type
+function checkFileType(file, cb){
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime
+  const mimetype = filetypes.test(file.mimetype);
+
+  if(mimetype && extname){
+    return cb(null,true);
+  } else {
+    cb('Error: Images Only! (jpeg, jpg, png, gif)');
+  }
+}
 
 // @desc   Handle POST request to create a new package
-// @route  POST /getVisual/users/:username/post-package
+// @route  POST /getVisual/upload/users/:username/post-package
 // @access Private
-const PostPackage = asyncHandler(async (req, res) => {
-  const { name, description, tags, price, category } = req.body;
-  const file = req.file; // Access the uploaded file using req.file
+const postPackage = asyncHandler(async (req, res) => {
+  try {
+    console.log('Request Headers:', req.headers);
+    // Retrieve the token from the cookie
+    const authCookie = req.cookies.authCookie;
+    console.log(authCookie);
+    if (!authCookie) {
+      console.log("authCookie not found");
+      return res.status(401).json({ message: 'Unauthorized: Missing token' });
 
-  // Check if all required fields are filled
-  if (!name || !description || !tags || !price || !category || !file) {
-    console.log('Please fill all fields and upload an image.');
-    return res.status(400).json({ message: 'Please fill all fields and upload an image.' });
+    }
+
+    // Verify the token and extract user ID
+    const decoded = jwt.verify(authCookie, process.env.JWT_SECRET);
+    const userId = decoded._id;
+
+    console.log(userId)
+
+    // Find user by ID
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: 'User Not found' });
+    }
+
+    // Proceed with file upload and package creation
+    upload(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({ message: err }); // Error handling for file upload
+      }
+      if (!req.file) { // Check if file is present
+        return res.status(400).json({ message: 'Error: No File Selected!' });
+      }
+
+      try {
+        // Extract form data
+        const { name, desc, tags, price, category } = req.body;
+        const imagePath = `uploads/${req.file.filename}`;
+
+        // Create new package instance
+        const newPackage = new Package({
+          name,
+          desc,
+          images: imagePath,
+          tags: tags.split(','),
+          user: userId, 
+          price,
+          category
+        });
+
+        // Save package to database
+        await newPackage.save();
+
+        res.status(201).json({ message: 'Package created successfully' });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({ message: 'Unauthorized: Invalid token' });
   }
-
-  // You can now use 'name', 'description', 'tags', 'price', 'category', and 'file' variables to handle the uploaded data
-  
-  res.send('uploaded!!!!');
 });
 
 module.exports = {
-  PostPackage,
+  postPackage,
 };

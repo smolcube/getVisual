@@ -11,10 +11,10 @@ export default function UserMenu() {
                 <Link to={`/getVisual/users/${currentUser.username}`}>Profile</Link>
             </li>
             <li className="user-menu__items">
-                <Link to={`/getVisual/users/${currentUser.username}/post-package`}>Post Package</Link>
+                <Link to={`/getVisual/upload/users/${currentUser.username}/post-package`}>Post Package</Link>
             </li>
             <li className="user-menu__items">
-                <Link to={`/getVisual/users/${currentUser.username}/settings`}>Settings</Link>
+                <Link to={`/getVisual/upload/users/${currentUser.username}/settings`}>Settings</Link>
             </li>
             <li className="user-menu__items">
                 <Link to='auth/logout'>Logout</Link>

@@ -18,15 +18,15 @@ const port = process.env.PORT || 5000;
 
 connectDB()
 
-app.use(cors({origin: 'http://localhost:3000', credentials:true}));
+app.use(cors({origin: 'http://localhost:3000', credentials:true}));0
 app.use(cookieParser()); // Use cookie-pasrser to access cookies
 app.use(errorHandler);
 app.use(express.json()); // Use built-in JSON parsing middleware
 app.use(express.urlencoded({ extended: true })); // Use built-in URL-encoded parsing middleware
 
-app.use('/getvisual', require('./routes/mainRoutes'));
-app.use('/getvisual/dashboard', require('./routes/adminRoutes'));
-
+app.use('/getVisual', require('./routes/mainRoutes'));
+app.use('/getVisual/dashboard', require('./routes/adminRoutes'));
+app.use('/getVisual/upload', require('./routes/uploadRoutes'));
 
 app.use(notFound);
 app.use(errorHandler);

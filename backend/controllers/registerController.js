@@ -2,7 +2,6 @@
 const asyncHandler = require('express-async-handler');
 const jwt = require('jsonwebtoken'); 
 const crypto = require('crypto');
-const cookie = require('cookie');
 
 // Import models
 const Customer = require('../models/customerModel');

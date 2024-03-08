@@ -54,7 +54,8 @@ function App() {
 
         <Route path="/getVisual/services/category-details/:categoryName" element={<CategoryDets />}/>
         
-        <Route path="/getVisual/users/:username/post-package" element={<PostPackage/>}/>
+        <Route path="/getVisual/upload/users/:username/post-package" element={<PostPackage/>}/>
+
         <Route path="/getVisual/users/:username" element={<Profile />}/>
         {/*<Route path="/getVisual/users/:username/settings" element={<Settings />}/>*/}
 

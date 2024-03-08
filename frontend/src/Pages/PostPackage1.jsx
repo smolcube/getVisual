@@ -1,42 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
-/// modules
-import newRequest from '../Utils/newRequest';
 
 // Components
 import UploadField from '../Components/UploadField';
 import Dropdown from '../Components/Dropdown';
 import ButtonCTA from '../Components/ButtonCTA';
+import newRequest from '../Utils/newRequest';
 
 export default function PostPackage() {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser")); 
-
-  const categoryOptions = ['تصميم شعار - logo design', 'تصميم هوية - brand design', 'فن الرسوم التوضيحية - illustrations', 'المطبوعات - Printing', 'واحهة وتجربة المستخدم - UI/Ux', 'التعبئة والتغليف - packaging', 'التحريك - motion', 'مواقع التواصل - social media'];
+  const categoryOptions = ['logo design - تصميم شعار', 'brand design - تصميم هوية', 'فن الرسوم التوضيحية - illustrations', 'المطبوعات - Printing', 'واحهة وتجربة المستخدم - UI/Ux', 'التعبئة والتغليف - packaging', 'التحؤيك - motion', 'مواقع التواصل - social media'];
 
   const tagOptionsMap = {
-    'تصميم شعار - logo design': ['Abstract', 'Typography', 'Icon'],
-    'تصميم هوية - brand design': ['Branding', 'Identity', 'Logo'],
+    'logo design - تصميم شعار': ['Logo', 'Typography', 'Icon'],
+    'brand design - تصميم هوية': ['Branding', 'Identity', 'Logo'],
     'فن الرسوم التوضيحية - illustrations': ['Illustration', 'Drawing', 'Digital Art'],
     'المطبوعات - Printing': ['Printing', 'Brochure', 'Flyer'],
     'واحهة وتجربة المستخدم - UI/Ux': ['UI', 'UX', 'Design'],
     'التعبئة والتغليف - packaging': ['Packaging', 'Label', 'Box'],
-    'التحريك - motion': ['Motion Graphics', 'Animation', 'Video'],
-    'مواقع التواصل - social media': ['Social Media', 'Instagram', 'Facebook', 'youtube']
+    'التحؤيك - motion': ['Motion Graphics', 'Animation', 'Video'],
+    'مواقع التواصل - social media': ['Social Media', 'Instagram', 'Facebook']
   };
 
   const { username } = useParams();
   console.log('route hit');
 
+  const [images, setImages] = useState('');
   const [input, setInput] = useState({
     name: '',
     desc: '',
     tags: '',
-    price: 10,
+    price: 10, 
     category: ''
   });
-
-  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,16 +43,12 @@ export default function PostPackage() {
   };
 
   const handleFileChange = (e) => {
-    setInput(prevInput => ({
-      ...prevInput,
-      file: e.target.files[0] // Store the selected file in state
-    }));
+    console.log(e.target.files[0]);
+    setImages(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(currentUser.accType);
-    
     try {
       const formData = new FormData();
       formData.append('description', input.desc);
@@ -64,35 +56,19 @@ export default function PostPackage() {
       formData.append('price', input.price);
       formData.append('category', input.category);
       formData.append('tags', input.tags);
-      formData.append('file', input.file); // Append the selected file to the form data
-  
-  // Make the HTTP request using newRequest
-  const response = await newRequest.post(`/upload/users/${username}/post-package`, formData, {
-    headers: {
-    'Content-Type': 'multipart/form-data' // Set the content type to multipart/form-data
-    }
-  });
-  
-      // Check if the upload was successful
-      if (response.status === 200) {
-        console.log(response.status);
-        setMessage('Upload successful!');
-        // Optionally, you can reset the input fields after successful upload
-        setInput({
-          name: '',
-          desc: '',
-          tags: '',
-          price: 10,
-          category: ''
-        });
-      }  else {
-        // Handle unexpected response status
-        console.log('Unexpected response status:', response.status);
-        setMessage('Unexpected response status:', response.status);
-      }
+      formData.append('file', images); // Append the file
+
+      // Make the HTTP request using newRequest
+      const response = await newRequest.post(`/getVisual/users/${username}/post-package`, formData);
+
+      // Handle the response
+      console.log('Data:', formData);
+      // Add any further logic here for handling success
+      setError(''); // Clear error if submission is successful
     } catch (error) {
-      throw new Error (error)
-      setMessage('Failed to post package. Please try again!!!.');
+      console.error('Error:', error);
+      // Set error message
+      setError('Failed to post package. Please try again.');
       // Add any further logic here for handling errors
     }
   };
@@ -134,7 +110,7 @@ export default function PostPackage() {
           />
 
           <div className="slidecontainer">
-            <span className='span-mid'> price {input.price}</span>
+          <span className='span-mid'> price {input.price}</span>
             <input
               type="range"
               min={10}
@@ -146,7 +122,7 @@ export default function PostPackage() {
               onChange={e => setInput(prevInput => ({ ...prevInput, price: parseInt(e.target.value) }))} // Update price state when slider changes
             />
           </div>
-
+          
           {/* Dropdown input for category */}
           <Dropdown
             label="category"
@@ -175,7 +151,7 @@ export default function PostPackage() {
             <label htmlFor="file">+</label>
           </div>
           <ButtonCTA class="pri-cta cta" name="إرسال" />
-          {message && <div className="messages">{message}</div>}
+          {error && <div className="error-message">{error}</div>}
         </form>
       </div>
     </div>

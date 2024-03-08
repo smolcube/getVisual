@@ -12,13 +12,14 @@ export default function UploadField(props) {
 
       <input
         className={inputClassName}
-        className2={props.className2}
+        classname2={props.classname2}
         type={props.type}
         id={props.id}
         placeholder={props.placeholder}
         value={props.value}
         name={props.name}
         onChange={props.onChange}
+        required
       />
     </div>
   );

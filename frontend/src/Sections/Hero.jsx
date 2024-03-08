@@ -38,7 +38,7 @@ export default function Hero() {
     />
     </Link>
   ) : (
-    <Link to={`/getVisual/users/${currentUser.username}/post-package`}>
+    <Link to={`/getVisual/upload/users/${currentUser.username}/post-package`}>
     <ButtonCTA
       class='pri-cta cta'
       name={acctype === 'customer' ? 'تصفح' : 'نشر خدمة'}
