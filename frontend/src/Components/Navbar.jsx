@@ -28,12 +28,6 @@ export default function Navbar() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const isLoggedIn = !!currentUser; // Check if a user is logged in
 
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = () => {
-    setClicked(!clicked);
-  };
-
   // Side Menu
   const [isNavbarHidden, setIsNavbarHidden] = useState(true);
   const toggleVisibility = () => {
@@ -168,7 +162,7 @@ export default function Navbar() {
           <img src={user} alt="" />
           {userMenu && <UserMenu />}
         </button>
-          <span className='span-small'>{currentUser.username}</span>
+        <span className='span-small'>{currentUser.username}</span>
         </div>
         ) : (
           !isDash && ( // Only show login button if not in dashboard

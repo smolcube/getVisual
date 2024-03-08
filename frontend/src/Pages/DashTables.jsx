@@ -55,7 +55,7 @@ export default function DashTables() {
               {post.username}
             </div>
             <div className="posts-container__table--column2">
-              <Link to={`/getVisual/dashboard/main/pending/${post.id}`}>
+              <Link to={`/getVisual/dashboard/:state/${post.id}`}>
               {post.title}
               </Link>
             </div>

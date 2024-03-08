@@ -30,7 +30,7 @@ export default function Dashboard() {
           {states.map((statie, index) => ( 
             <NavLink
               key={index}
-              to={`/getVisual/dashboard/main/${statie.id}`} 
+              to={`/getVisual/dashboard/${statie.id}`} 
             >
               <div className="card" id={statie.id}>
                 <h3>{statie.state}</h3>

@@ -59,17 +59,18 @@ function App() {
         <Route path="/getVisual/users/:username" element={<Profile />}/>
         {/*<Route path="/getVisual/users/:username/settings" element={<Settings />}/>*/}
 
-        <Route path="/getVisual/dashboard/login" element={<AdminLogin />} />
-        <Route path="/getVisual/dashboard/main" element={<Dashboard />} />
-        <Route path="/getVisual/dashboard/main/:state" element={<DashTables />} />
-        <Route path="/getVisual/dashboard/main/pending/:id" element={<Package />} />
-        <Route path="/getVisual/dashboard/main/pending/:id/image" element={<PackageSlide />} />
 
-      {/* Protect the dashboard route using Auth component 
+
+      {/* Protect the dashboard route using Auth component */}
         <Route
-         path="/getVisual/dashboard/main"
+         path="/getVisual/dashboard/"
          element={<Auth element={Dashboard } />}
-      />*/}
+        />
+        <Route path="/getVisual/dashboard/login" element={<AdminLogin />} />
+        <Route path="/getVisual/dashboard/:state" element={<DashTables />} />
+        <Route path="/getVisual/dashboard/:state/:id" element={<Package />} />
+        <Route path="/getVisual/dashboard/:state/:id/image" element={<PackageSlide />} />
+        
       </Routes>
       <Footer />
     </Router>
