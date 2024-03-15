@@ -2,21 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 // import controllers
-//const { main } = require('../controllers/mainController');
 const { dashboard } = require('../controllers/dashboardController');
 const { adminLogin } = require('../controllers/adminController');
+const { displayAll, displayOne } = require('../controllers/packagesControllers');
 
 const { protect } = require('../middleware/authHandler')
 
 // Main routes
-router.get('/main', dashboard);
-router.post('/login|signin', adminLogin);
+router.post('/login', adminLogin);
+router.get('/', dashboard);
 
-
-router.get('/:username');
-router.get('/posts');
-router.get('/post/:id');
-router.put('/post/:id');
-router.delete('/post/:id');
+// Main routes
+router.get('/:state', displayAll);
+router.get('/:state/:id', displayOne);
 
 module.exports = router;

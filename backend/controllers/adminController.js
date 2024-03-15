@@ -31,7 +31,7 @@ const adminLogin = asyncHandler(async (req, res)=>{
     res.setHeader('Authorization', `Bearer ${token}`);
     
     res.json({
-      username: admin.email,
+      username: admin.username,
       email: admin.email,
       token: token,
       message: "LOGGED IN SUCCESSFULLY" 

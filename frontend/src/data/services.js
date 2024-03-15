@@ -20,6 +20,12 @@ import motionImg from './categories/motionImg.jpeg';
 
 // phone Images
 import logoDesignPhone from './categories/logo-design-phone.png'
+import brandingDesignImgPhone from './categories/branding-design-phone.jpg'
+import illustrationsPhone from './categories/illustrations-phone.jpg'
+import printDesignImgPhone from './categories/printImg-phone.jpg'
+import uiDesignImgPhone from './categories/uiDesignImg-phone.jpg'
+import packagingDesignImgPhone from './categories/packaging-phone.jpg';
+import motionImgPhone from './categories/motionImg-phone.jpg';
 
 // Define an array of category data with icon, alt, and name
   const services = [
@@ -40,6 +46,7 @@ import logoDesignPhone from './categories/logo-design-phone.png'
 
     { icon: brandingDesign,
       img: brandingDesignImg,
+      phone: brandingDesignImgPhone,
       for:'',
       alt: 'Branding Design',
       name: 'تصميم هوية',
@@ -55,6 +62,7 @@ import logoDesignPhone from './categories/logo-design-phone.png'
 
     { icon: illustration, 
       img: illustrationsImg,
+      phone: illustrationsPhone,
       for:'simple illustration',
       alt: 'Illustration', 
       name: 'الفن والرسوم التوضيحية',
@@ -70,6 +78,7 @@ import logoDesignPhone from './categories/logo-design-phone.png'
   
     { icon: printDesign, 
       img: printDesignImg,
+      phone: printDesignImgPhone,
       for: 'For a coffee shop',
       alt: 'Print Design', 
       name: 'المطبوعات',
@@ -85,6 +94,7 @@ import logoDesignPhone from './categories/logo-design-phone.png'
 
     { icon: uiux, 
       img: uiDesignImg,
+      phone: uiDesignImgPhone,
       for: '',
       alt: 'User Interface', 
       name: 'واجهة وتجربة المستخدم',
@@ -100,6 +110,7 @@ import logoDesignPhone from './categories/logo-design-phone.png'
 
     { icon: packaging, 
       img: packagingDesignImg,
+      phone: packagingDesignImgPhone,
       for: 'Healthy Chocolate package',
       alt: 'Packaging', 
       name: 'التعبئة والتغليف',
@@ -115,6 +126,7 @@ import logoDesignPhone from './categories/logo-design-phone.png'
 
     { icon: motion, 
       img: motionImg,
+      phone: motionImgPhone,
       for:'',
       alt: 'Motion', 
       name: 'التحريك',

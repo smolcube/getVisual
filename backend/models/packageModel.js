@@ -34,7 +34,12 @@ const packageSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true
-  },
-});
+  }
+},
+{
+  timestamps: true // Add this option to include timestamps
+}
+);
+
 const Package = mongoose.model('Package', packageSchema);
 module.exports = Package;

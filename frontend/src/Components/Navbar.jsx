@@ -19,11 +19,7 @@ export default function Navbar() {
   const location = useLocation();
   const isRootRoute = location.pathname === '/getVisual';
   
-  const isDash = location.pathname === '/getVisual/dashboard/login' ||
-  location.pathname === '/getVisual/dashboard/main' ||
-  location.pathname === '/getVisual/dashboard/main/pending' ||
-  location.pathname === '/getVisual/dashboard/main/approved' ||
-  location.pathname === '/getVisual/dashboard/main/rejected';
+  const isDash = location.pathname.startsWith('/getVisual/dashboard');
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const admin = JSON.parse(localStorage.getItem("Admin"));

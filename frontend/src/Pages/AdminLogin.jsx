@@ -47,7 +47,7 @@ const handleSubmit= async (e) =>{
     "Admin",
     JSON.stringify({ ...res.data, expiresAt })
   );
-  navigate("/getVisual/dashboard/main")
+  navigate("/getVisual/dashboard/")
 
   // Recieving error from the console to show on UI
   } catch (error) { 

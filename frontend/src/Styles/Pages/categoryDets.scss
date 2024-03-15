@@ -73,32 +73,3 @@
         }
     }
 }
-/*
-.categoryDets{
-    padding-block: 75px 100px;
-    display: flex;
-    place-items: center;
-    flex-direction: column;
-    
-    @include min-width(medium){
-    }
-
-.left-column{
-    padding: 0;
-    height: fit-content;
-
-    .card{
-        display: flex;
-        padding-block-end: rem(30);
-        img{
-            margin-inline-end: 20px;
-            width: 200px;
-            flex-direction: row-reverse;
-            border-radius: 0 20px 0 0;
-        }
-        p{
-            padding-block-start: rem(20);
-        }
-    }
-}
-}*/

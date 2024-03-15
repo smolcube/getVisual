@@ -4,11 +4,13 @@ import { FaSearch, FaTimes } from "react-icons/fa";
 import ButtonIcon from "./ButtonIcon";
 
 export default function SearchBanner() {
+  console.log('searchbanner')
     
   const [showInput, setShowInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearchClick = () => {
+    console.log('search  button clicked')
     setShowInput(true);
   };
 
@@ -31,7 +33,7 @@ export default function SearchBanner() {
       {!showInput ? (
         <ButtonIcon 
           className="search-icon" 
-          onclick={handleSearchClick}
+          onClick={handleSearchClick}
           id="search"
           ionicon="search-outline"
         />
