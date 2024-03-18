@@ -42,16 +42,26 @@
                 margin-bottom: rem(30);
 
             }
+            .textField-box{
+                    position: relative;
+
+                .form-messages{
+                    position: absolute;
+                    top: 105%;
+                    font-size: clamp(0.5rem, 0.368rem + 0.563vw, 0.875rem);
+                &.success {
+                    color: green !important;
+                  }
+                  
+                &.error {
+                    color: red !important;
+                  }
+                }
+            }
             button{
                 margin-bottom: rem(30);
             }
-            .success {
-                color: green !important;
-              }
-              
-              .error {
-                color: red !important;
-              }
+
             }
 
 

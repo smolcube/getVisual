@@ -81,12 +81,10 @@ export default function ForgotPass() {
                 onChange={(e) => setEmail(e.target.value)}
               />
 
-              <div className="form-messages">
               {message.text && 
                 <div className={`form-messages ${message.className}`}>
                   {message.text}
                 </div>}
-              </div>
             </div>
           </div>
           <button className="pri-cta cta" type="submit">

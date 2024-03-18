@@ -2,21 +2,26 @@
 @use '../utils' as *;
  
 .package{
+    direction: rtl;
     background-color: $background;
-    padding-inline: rem(76);
-    padding-block: rem(120) rem(100);
+    padding-block: rem(150);
 
+    h3{
+        margin-inline-start: rem(80) ;
+        margin-bottom: rem(15);
+    }
 
     &__container{
+        margin-inline: rem(76) ;
+        padding: rem(50) rem(100);
+        height:fit-content;
         background-color: $white;
         border-radius: 25px;
-        width: 1300px;
-        height: 600px;
 
-        display: flex;
-        place-items: center;
-        justify-content: center;
-        gap: rem(50);
+     @include medium-and-smaller{
+        margin-inline: rem(30) ;
+        padding-inline: rem(30);
+     }
 
         &--image{
             img{

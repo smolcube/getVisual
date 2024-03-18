@@ -8,6 +8,8 @@ const Package = require('../models/packageModel');
 // @route  GET /getVisual/dashboard/:state
 // @access Private
 const displayAll = asyncHandler(async (req, res) => {
+    console.log("display all");
+
     const { state } = req.params;
     if (state === "pending"){
     try {
@@ -38,18 +40,10 @@ const displayOne = asyncHandler(async (req, res) => {
     const { id, state } = req.params;
 
     // display one approved packageItemsDets
-    if (state === "approved"){
+    if (state === "pending"){
         try {
-            const packageItemsDets = await Package.find({ _id:id ,state }).populate('user', 'username');
-            res.status(200).json({ packageItemsDets });
-        } catch (error) {
-            console.error('Error fetching packages:', error);
-            res.status(500).json({ message: 'Server error' });
-        }
-    } else if (state === "rejected"){
-        try {
-            const packageItemsDets = await Package.find({ state }).populate('user', 'username');
-            res.status(200).json({ packageItemsDets });
+            const packageItem = await Package.find({ _id:id ,state: false }).populate('user', 'username');
+            res.status(200).json({ packageItem });
         } catch (error) {
             console.error('Error fetching packages:', error);
             res.status(500).json({ message: 'Server error' });

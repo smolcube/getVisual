@@ -1,0 +1,14 @@
+@use '../utils/' as *;
+
+.sidebar{
+    margin-block: rem(150);
+    margin-inline: rem(60);
+
+    &__menu{
+        margin-top: rem(20);
+        padding-right: rem(60);
+        display: grid;
+        gap: rem(120);
+        border-right: 2px solid $blue;
+    }
+}

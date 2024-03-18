@@ -18,12 +18,12 @@
 
 /* Primary CTA button */
 .pri-cta {
-  background-color: hsl(43, 100%, 53%);
+  background-color: #ffbb0f;
   border: 3px solid #F7D38B;
 }
 .pri-cta:hover {
-  background-color: hsl(54, 100%, 65%);
-  border-color: hsl(54, 100%, 65%);
+  background-color: #ffed4d;
+  border-color: #ffed4d;
 }
 @media (max-width: 992px) {
   .pri-cta {
@@ -76,7 +76,11 @@
   color: #7890A8;
 }
 
-.feedback {
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
   position: absolute;
   top: 0;
   left: 0;
@@ -88,13 +92,13 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
 }
-.feedback__close {
+.modal__close {
   display: none;
 }
-.feedback--open {
+.modal--open {
   display: block;
 }
-.feedback__overlay {
+.modal__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -102,7 +106,7 @@
   height: 100%;
   cursor: pointer;
 }
-.feedback__content {
+.modal__content {
   position: relative;
   top: 30%;
   right: 30%;
@@ -113,12 +117,12 @@
   max-width: 80%;
   width: 400px;
 }
-.feedback__content__close-btn {
+.modal__content__close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
 }
-.feedback__body {
+.modal__body {
   margin-top: 20px;
   text-align: center;
 }
@@ -187,9 +191,9 @@
 .navbar__list li:not(:last-child) a:hover,
 .navbar__list li:not(:last-child) a .active, .navbar__list li:not(:last-child) li:hover,
 .navbar__list li:not(:last-child) li .active {
-  color: hsl(43, 100%, 53%);
+  color: #ffbb0f;
   cursor: pointer;
-  border-bottom: 2px solid hsl(43, 100%, 53%);
+  border-bottom: 2px solid #ffbb0f;
 }
 .navbar__buttons {
   display: flex;
@@ -359,14 +363,14 @@ input[type=radio] {
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: hsl(54, 100%, 65%); /* Green background */
+  background: #ffed4d; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: hsl(54, 100%, 65%); /* Green background */
+  background: #ffed4d; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -498,7 +502,7 @@ input[type=text], input[type=password] {
   color: #7890A8;
 }
 .user-menu ul li > a:hover {
-  color: hsl(54, 100%, 65%);
+  color: #ffed4d;
 }
 
 body {
@@ -549,7 +553,7 @@ p {
   line-height: 170%; /* 40.8px */
 }
 p .highlighted {
-  color: hsl(43, 100%, 53%);
+  color: #ffbb0f;
   font-style: italic;
 }
 
@@ -700,9 +704,9 @@ ion-icon {
   row-gap: 20px;
   padding: 20px;
   margin-bottom: 40px;
-  border: 2px solid hsl(54, 100%, 65%);
-  border-bottom: 5px solid hsl(43, 100%, 53%);
-  border-right: 3px solid hsl(43, 100%, 53%);
+  border: 2px solid #ffed4d;
+  border-bottom: 5px solid #ffbb0f;
+  border-right: 3px solid #ffbb0f;
   border-radius: 25px;
   transition: border-width 0.3s;
 }
@@ -711,7 +715,7 @@ ion-icon {
 }
 .about-card:hover {
   border-width: 7px;
-  border-color: hsl(43, 100%, 53%);
+  border-color: #ffbb0f;
 }
 @media (min-width: 71.875em) {
   .about-card {
@@ -972,7 +976,7 @@ ion-icon {
   bottom: 75%;
   left: 5%;
   font-size: 8rem;
-  color: hsl(54, 100%, 65%);
+  color: #ffed4d;
 }
 .dashboard__main--cards #rejected > h3::before {
   content: ".";
@@ -1057,14 +1061,22 @@ ion-icon {
 .reset__container--form-feild {
   margin-bottom: 1.875rem;
 }
-.reset__container--form button {
-  margin-bottom: 1.875rem;
+.reset__container--form .textField-box {
+  position: relative;
 }
-.reset__container--form .success {
+.reset__container--form .textField-box .form-messages {
+  position: absolute;
+  top: 105%;
+  font-size: clamp(0.5rem, 0.368rem + 0.563vw, 0.875rem);
+}
+.reset__container--form .textField-box .form-messages.success {
   color: green !important;
 }
-.reset__container--form .error {
+.reset__container--form .textField-box .form-messages.error {
   color: red !important;
+}
+.reset__container--form button {
+  margin-bottom: 1.875rem;
 }
 
 .postService {
@@ -1140,19 +1152,26 @@ ion-icon {
 }
 
 .package {
+  direction: rtl;
   background-color: #f0f2f5;
-  padding-inline: 4.75rem;
-  padding-block: 7.5rem 6.25rem;
+  padding-block: 9.375rem;
+}
+.package h3 {
+  margin-inline-start: 5rem;
+  margin-bottom: 0.9375rem;
 }
 .package__container {
+  margin-inline: 4.75rem;
+  padding: 3.125rem 6.25rem;
+  height: fit-content;
   background-color: #ffffff;
   border-radius: 25px;
-  width: 1300px;
-  height: 600px;
-  display: flex;
-  place-items: center;
-  justify-content: center;
-  gap: 3.125rem;
+}
+@media (max-width: 992px) {
+  .package__container {
+    margin-inline: 1.875rem;
+    padding-inline: 1.875rem;
+  }
 }
 .package__container--image img {
   width: 500px;
@@ -1281,6 +1300,18 @@ ion-icon {
   }
 }
 
+.sidebar {
+  margin-block: 9.375rem;
+  margin-inline: 3.75rem;
+}
+.sidebar__menu {
+  margin-top: 1.25rem;
+  padding-right: 3.75rem;
+  display: grid;
+  gap: 7.5rem;
+  border-right: 2px solid #333366;
+}
+
 .hero {
   margin-top: 5.75rem;
   padding-bottom: 6.25rem;
@@ -1359,7 +1390,7 @@ ion-icon {
   content: "+20";
   margin-inline-end: 10px;
   font-size: clamp(1.875rem, 0.775rem + 4.695vw, 5rem);
-  color: hsl(43, 100%, 53%);
+  color: #ffbb0f;
 }
 .about__container .card-item {
   padding: 20px 40px;
@@ -1429,7 +1460,7 @@ ion-icon {
   margin-top: 10px;
 }
 .service-item h4:hover {
-  color: hsl(43, 100%, 53%);
+  color: #ffbb0f;
   cursor: pointer;
 }
 
@@ -1494,7 +1525,7 @@ ion-icon {
   height: fit-content;
   line-height: 200%;
   color: #7890A8;
-  border-top: 2px dashed hsl(43, 100%, 53%);
+  border-top: 2px dashed #ffbb0f;
 }
 @media (max-width: 71.8125em) {
   .faqs__questions .answer {

@@ -10,6 +10,7 @@ import ForgotPass from './Pages/ForgotPass';
 
 import PostPackage from './Pages/PostPackage';
 import Profile from './Pages/Profile';
+import Settings from './Pages/Settings.jsx';
 import Package from './Pages/Package';
 import PackageSlide from './Pages/PackageSlide.jsx'
 
@@ -57,7 +58,7 @@ function App() {
         <Route path="/getVisual/upload/users/:username/post-package" element={<PostPackage/>}/>
 
         <Route path="/getVisual/users/:username" element={<Profile />}/>
-        {/*<Route path="/getVisual/users/:username/settings" element={<Settings />}/>*/}
+        <Route path="/getVisual/upload/users/:username/settings" element={<Settings />}/>
 
 
 

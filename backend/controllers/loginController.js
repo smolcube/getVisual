@@ -35,7 +35,7 @@ const login = asyncHandler(async (req, res) => {
     
   // make and save a cookie
   cookieToken(req, res, 'authCookie',
-      authToken, 24 * 60 * 60 * 1000,
+      authToken, 60 * 1000,
       '/getVisual');
 
     res.json({

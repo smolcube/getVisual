@@ -68,6 +68,7 @@ Sincerely,\nThe getVisual Team`,
 );
 res.status(200).json({message:"الرجاء التحقق من بريدك الإلكتروني"});
 
+console.log(resetLink);
 });
 
 

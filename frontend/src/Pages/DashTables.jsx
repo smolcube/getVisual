@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
 
 // components // modules
+import ButtonCTA from '../Components/ButtonCTA';
 import ButtonIcon from '../Components/ButtonIcon';
-import Feedback from '../Components/Feedback';
+import Modal from '../Components/Modal';
 import newRequest from '../Utils/newRequest';
 
 
@@ -92,7 +93,7 @@ export default function DashTables() {
                 {packageItem.user.username}
               </div>
               <div className="posts-container__table--column2">
-                <Link to={`/getVisual/dashboard/:state/${packageItem._id}`}>
+                <Link to={`/getVisual/dashboard/${state}/${packageItem._id}`}>
                   {packageItem.name}
                 </Link>
               </div>
@@ -119,20 +120,19 @@ export default function DashTables() {
           ))}
         </div>
       </div>
-      {/* Render the accept confirmation modal */}
-      <Feedback isOpen={showConfirmationModal} onClose={cancelAccept}>
+
+      {/* Render the accept confirmation */}
+      <Modal isOpen={showConfirmationModal} onClose={cancelAccept}>
         <h3>تــأكيـد</h3>
         <p>هل تريد الموافقة على نشر هذه الخدمة؟</p>
-        <ButtonIcon id='acceptBtn' onClick={confirmAccept} ionicon="checkmark-circle-outline" />
-        <ButtonIcon id='cancelBtn' onClick={cancelAccept} ionicon="close-circle-outline" />
-      </Feedback>
-      {/* Render the reject confirmation modal */}
-      <Feedback isOpen={rejectConfirmationModal} onClose={cancelReject}>
+        <ButtonCTA id='acceptBtn' class='pri-cta cta' name='نعم' function={confirmAccept} />
+      </Modal>
+      {/* Render the reject confirmation */}
+      <Modal isOpen={rejectConfirmationModal} onClose={cancelReject}>
         <h3>تــأكيـد</h3>
         <p>هل تريد رفض نشر هذه الخدمة؟</p>
-        <ButtonIcon id='rejectBtn' onClick={confirmReject} ionicon="trash-outline" />
-        <ButtonIcon id='cancelBtn' onClick={cancelReject} ionicon="close-circle-outline" />
-      </Feedback>
+        <ButtonCTA id='rejectBtn' class='pri-cta cta' name='نعم' function={confirmReject} />
+      </Modal>
     </div>
   );
 }

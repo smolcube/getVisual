@@ -33,7 +33,6 @@ ejs نقوم باستخدام
           height: fit-content;
           background-color: white;
           border-radius: 45px;
-          padding-inline: 3.75rem;
           padding-block: 2.5rem;
       }
 
@@ -42,7 +41,11 @@ ejs نقوم باستخدام
       }
 
       .reset__container--title {
-          margin-bottom: 1.625rem;
+        font-size: clamp(1.875rem, 1.083rem + 3.38vw, 4.125rem);
+        font-weight: 600;
+        line-height: 124.4%; /* 37.32px */
+        color: #333366;;
+        margin-bottom: 1.625rem;
       }
 
       .reset__container--content {
@@ -56,33 +59,32 @@ ejs نقوم باستخدام
           place-items: center;
       }
       .reset__container--form .textField-box {
-    padding-inline: 0.9375rem; /* Equivalent to rem(15) */
+    padding-inline: 0.9375rem;
     width: clamp(10.688rem, 3.447rem + 30.892vw, 31.25rem);
     height: clamp(1.25rem, 0.59rem + 2.817vw, 3.125rem);
-    border: 2px solid #78a0c0; /* Assuming $light-blue is defined as #78a0c0 */
+    border: 2px solid #78a0c0;
     border-radius: 45px;
     display: flex;
-    place-items: center;
 }
 
 /* Small screen adjustments */
 @media screen and (max-width: 600px) {
     .reset__container--form .textField-box {
-        padding-inline: 0.5625rem; /* Equivalent to rem(9) */
+        padding-inline: 0.5625rem;
     }
 }
 
 /* Medium screen adjustments */
 @media screen and (min-width: 601px) {
     .reset__container--form .textField-box {
-        padding-inline: 1.5625rem; /* Equivalent to rem(25) */
+        padding-inline: 1.5625rem;
     }
 }
       .reset__container--form-feild {
           margin-bottom: 1.875rem;
       }
 
-      .reset__container--form button {
+      .reset__container--form .cta {
           margin-bottom: 1.875rem;
       }
 
@@ -93,23 +95,93 @@ ejs نقوم باستخدام
       .reset__container--form .error {
           color: red !important;
       }
+        /* text filed box styles */
+        .textField-box {
+            width: clamp(10.688rem, 3.447rem + 30.892vw, 31.25rem);
+            height: clamp(1.25rem, 0.59rem + 2.817vw, 3.125rem);
+            border: 2px solid #7890A8;
+            border-radius: 45px;
+        }
 
-    .icn-btn {
-    background: none;
-    border: 0;
-    border-radius: 50%;
-    padding: 2px 3px;
-  }
+        .form-fields{
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #7890A8;
+        }
+        input[type="password"] {
+            font-size: clamp(0.75rem, 0.574rem + 0.751vw, 1.25rem);
+        }
+        ion-icon {
+            width: clamp(0.75rem, 0.244rem + 2.16vw, 2.188rem);
+            height: clamp(0.75rem, 0.244rem + 2.16vw, 2.188rem);
+            color: #7890A8;
+        }
 
-  .icn-btn:hover {
-    background-color: #BABDC7;
-  }
+        @media screen and (max-width: 600px) {
+            .textField-box {
+                padding-inline: 9rem;
+            }
+        }
+
+        @media screen and (min-width: 601px) {
+            .textField-box {
+                padding-inline: 25rem;
+            }
+        }
+
+      .cta{
+          width: max-content;
+          padding-inline: 0.625rem;
+          padding-block: 0.3125rem;
+          font-size: clamp(0.625rem, 0.405rem + 0.939vw, 1.25rem);
+          color: #ffffff;
+          border-radius: 50px;
+          
+          a{
+              color: #fff;
+            }
+          
+        }
+/* Primary CTA button */
+    .pri-cta{
+        background-color: #ffbb0f;
+        border: 3px solid #F7D38B;
+        
+        @media screen and (max-width: 992px){
+            border: 2px solid #F7D38B;
+        }
+        
+    }
+        .pri-cta:hover{
+            background-color: #ffed4d;
+            border-color: #ffed4d;
+        }
+
+        .icn-btn{
+            background: none;
+            border: 0;
+            border-radius: 50%;
+            padding: 2px 3px;
+        }   
+        .icn-btn:hover{
+                background-color: #BABDC7;
+        }
+
   </style>
     
 </head>
 <body>
 <div class="reset">
   <div class="reset__container">
+    <img
+    className="reset__container--img"
+    src='./assets/resetPass-wide.jpg'
+
+    alt=""
+  />
+
+
       <h1 class="reset__container--title">اعادة تعيين كلمة المرور</h1>
       <p class="reset__container--content">من فضلك ادخل كلمة مرور جديدة</p>
       <form action="" method="POST" class="reset__container--form">
@@ -117,33 +189,40 @@ ejs نقوم باستخدام
         
           <div class="reset__container--form-feild input-field">
               <div class="textField-box">
-                  <input 
+                <ion-icon name="key-outline"></ion-icon>
+                <input 
+                    class="form-fields"
                     type="password" 
                     id="password" 
                     name="password" 
                     placeholder="ادخل كلمة مرور جديدة" 
-                  />
+                />
                   <button 
-                    id="show-pass" 
-                    onclick="togglePasswordVisibility('password')" 
-                    class="buttonIcon" 
-                    type="button">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </button>
+                  id="show-pass" 
+                  onclick="togglePasswordVisibility('password')" 
+                  class="icn-btn" 
+                  type="button">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+              
               </div>
               <br />
               <div class="textField-box">
+                <ion-icon name="key-outline"></ion-icon>
                   <input 
+                    class="form-fields"
                     type="password" 
                     id="rePassword" 
                     name="rePassword" 
                     placeholder="ادخل كلمة المرور الجديدة مجددا" 
                   />
-                  <button 
-                    id="show-pass" 
-                    onclick="togglePasswordVisibility('rePassword')" 
-                    class="buttonIcon" type="button">Show Password
-                  </button>
+                <button 
+                  id="show-pass" 
+                  onclick="togglePasswordVisibility('rePassword')" 
+                  class="icn-btn" type="button">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+              
               </div>
           </div>
           <button class="pri-cta cta" type="submit">تعيين كلمة المرور</button>
@@ -167,7 +246,11 @@ ejs نقوم باستخدام
             }
         }
     </script>
-    
+
+    <!-- ION ICONS LINK -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
 

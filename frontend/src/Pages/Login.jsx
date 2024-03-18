@@ -38,7 +38,6 @@ const navigate = useNavigate()
 
 const handleSubmit= async (e) =>{
   e.preventDefault();
-  console.log(input);
   try {
   const res = 
   await newRequest.post("/login",
@@ -47,7 +46,7 @@ const handleSubmit= async (e) =>{
     password : input.password,
   });
 
-  const expiresAt = Date.now() + (2 * 60 * 1000);
+  const expiresAt = Date.now() + (60 * 1000);
 
   // Update res.data with the new expiresAt value
   res.data.expiresAt = expiresAt;

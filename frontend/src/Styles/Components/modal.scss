@@ -1,7 +1,11 @@
 
 @use '../utils/' as *;
 
-.feedback {
+
+.modal-open {
+  overflow: hidden;
+}
+.modal {
     position: absolute;
     top: 0;
     left: 0;
