@@ -1,7 +1,7 @@
 @use '../utils/' as *;
 
 .posts-container {
-  direction: rtl;
+    direction: rtl;
     margin: rem(100);
     padding: rem(70) rem(30);
     background-color: $white;

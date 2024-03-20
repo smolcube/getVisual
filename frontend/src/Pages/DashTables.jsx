@@ -7,9 +7,8 @@ import ButtonIcon from '../Components/ButtonIcon';
 import Modal from '../Components/Modal';
 import newRequest from '../Utils/newRequest';
 
-
 export default function DashTables() {
-  const { state } = useParams();
+  const { state, id } = useParams();
   const [packages, setPackages] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
@@ -44,7 +43,7 @@ export default function DashTables() {
 
   const confirmAccept = async () => {
     try {
-      console.log("confirmAccept")
+      console.log("confirmAccept: ", selectedPackage)
     } catch (error) {
       console.error('Error accepting package:', error);
     }
@@ -59,11 +58,11 @@ export default function DashTables() {
   };
 
   const cancelAccept = () => {
-    setShowConfirmationModal(false); // Dismiss the accept confirmation modal on cancel
+    setShowConfirmationModal(false); 
   };
 
   const cancelReject = () => {
-    setRejectConfirmationModal(false); // Dismiss the reject confirmation modal on cancel
+    setRejectConfirmationModal(false);
   };
 
   // Translate state based on its value
@@ -131,7 +130,9 @@ export default function DashTables() {
       <Modal isOpen={rejectConfirmationModal} onClose={cancelReject}>
         <h3>تــأكيـد</h3>
         <p>هل تريد رفض نشر هذه الخدمة؟</p>
+        <Link to={`dashboard/${state}/${id}/accept`}>
         <ButtonCTA id='rejectBtn' class='pri-cta cta' name='نعم' function={confirmReject} />
+        </Link>
       </Modal>
     </div>
   );

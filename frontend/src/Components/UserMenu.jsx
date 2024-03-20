@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Components
+import Logout from './Logout';
+
+
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 export default function UserMenu() {
@@ -19,7 +23,7 @@ export default function UserMenu() {
               <Link to={`/getVisual/upload/users/${currentUser.username}/settings`}>Settings</Link>
             </li>
             <li className="user-menu__items">
-              <Link to='/auth/logout'>Logout</Link>
+              <Link to='/getVisual/auth/logout'>Logout</Link>
             </li>
           </>
         ) : (
@@ -34,7 +38,7 @@ export default function UserMenu() {
               <Link to={`/getVisual/upload/users/${currentUser.username}/settings`}>Settings</Link>
             </li>
             <li className="user-menu__items">
-              <Link to='/auth/logout'>Logout</Link>
+            <Logout />
             </li>
           </>
         )}

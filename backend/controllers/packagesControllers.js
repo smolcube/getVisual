@@ -52,7 +52,25 @@ const displayOne = asyncHandler(async (req, res) => {
 });
  
 
+// @desc   Change state to true
+// @route  PUT /getVisual/dashboard/:state/:id/accpect
+// @access Private
+const confirmAccept = asyncHandler(async (req, res) => {
+    console.log("accept one");
+
+});
+ 
+
+// @desc   Change state to false
+// @route  PUT /getVisual/dashboard/:state/:id/reject
+// @access Private
+const confirmReject = asyncHandler(async (req, res) => {
+    console.log("reject one");
+});
+
 module.exports = {
     displayAll,
     displayOne,
+    confirmAccept,
+    confirmReject,
 };

@@ -7,6 +7,7 @@ import Navbar from './Components/Navbar';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import ForgotPass from './Pages/ForgotPass';
+import Logout from './Components/Logout';
 
 import PostPackage from './Pages/PostPackage';
 import Profile from './Pages/Profile';
@@ -49,6 +50,8 @@ function App() {
         />
         <Route path="/getVisual/login" element={<Login />} />
         <Route path="/getVisual/signup" element={<Register />} />
+
+        <Route path="/getVisual/auth/logout" element={<Logout />} />
         
         <Route path="/getVisual/auth/forgot-password" element={<ForgotPass />} />
                 

@@ -17,6 +17,10 @@
         height:fit-content;
         background-color: $white;
         border-radius: 25px;
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 45px;
+        place-items: center;
 
      @include medium-and-smaller{
         margin-inline: rem(30) ;
