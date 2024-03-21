@@ -13,6 +13,7 @@ import Login from '../Pages/Login';
 import ButtonCTA from "./ButtonCTA";
 import SearchBanner from "./SearchBanner";
 import UserMenu from './UserMenu';
+import Logout from "./Logout";
 
 
 export default function Navbar() {
@@ -136,11 +137,7 @@ export default function Navbar() {
 
       <li className='opt'>  
       {isLoggedIn ? (
-      <button className='sec-cta cta'
-        //onClick={Logout}
-      >
-      خروج
-      </button>
+        <Logout />
       ) : (
       <button className='sec-cta cta'>
         <Link to='getVisual/login'>دخول</Link>
