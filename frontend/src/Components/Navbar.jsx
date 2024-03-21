@@ -17,10 +17,11 @@ import Logout from "./Logout";
 
 
 export default function Navbar() {
+
   const location = useLocation();
   const isRootRoute = location.pathname === '/getVisual';
-  
   const isDash = location.pathname.startsWith('/getVisual/dashboard');
+  
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const admin = JSON.parse(localStorage.getItem("Admin"));
