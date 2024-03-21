@@ -135,7 +135,7 @@ const handleSubmit= async (e) =>{
           />
         <ButtonIcon
           id="show-pass"
-          onclick={togglePasswordVisibility}
+          onClick={togglePasswordVisibility}
           ionicon="eye-outline"
         />
         </div>
