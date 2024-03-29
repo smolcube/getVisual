@@ -11,7 +11,7 @@ const displayAll = asyncHandler(async (req, res) => {
     console.log("display all");
 
     const { state } = req.params;
-    if (state === "pending"){
+    if (state === "pending" || "rejected"){
     try {
         const packages = await Package.find({ state: false }).populate('user', 'username');
         res.status(200).json({ packages });
@@ -19,7 +19,8 @@ const displayAll = asyncHandler(async (req, res) => {
         console.error('Error fetching packages:', error);
         res.status(500).json({ message: 'Server error' });
     }
-    } else if (state === "approved"){
+    } 
+    else if (state === "approved"){
         try {
             const packages = await Package.find({ state: true }).populate('user', 'username');
             res.status(200).json({ packages });
@@ -27,7 +28,9 @@ const displayAll = asyncHandler(async (req, res) => {
             console.error('Error fetching packages:', error);
             res.status(500).json({ message: 'Server error' });
         }
-    }
+    } 
+
+
 });
 
 
@@ -42,8 +45,10 @@ const displayOne = asyncHandler(async (req, res) => {
     // display one approved packageItemsDets
     if (state === "pending"){
         try {
-            const packageItem = await Package.find({ _id:id ,state: false }).populate('user', 'username');
+            const packageItem = await Package.find({ _id:id ,state: false })
+                                        .populate('user', 'username')
             res.status(200).json({ packageItem });
+            console.log("display ", packageItem);
         } catch (error) {
             console.error('Error fetching packages:', error);
             res.status(500).json({ message: 'Server error' });
@@ -51,26 +56,46 @@ const displayOne = asyncHandler(async (req, res) => {
     }
 });
  
-
-// @desc   Change state to true
-// @route  PUT /getVisual/dashboard/:state/:id/accpect
+// @desc   Changes state to true or false bases on func parameter
+// @route  PUT /getVisual/dashboard/:state/:func/:id
 // @access Private
-const confirmAccept = asyncHandler(async (req, res) => {
-    console.log("accept one");
+const updateStatus = asyncHandler(async (req, res) => {
 
-});
- 
+    // Assuming you're also passing a function in the URL
+    const { func, state, id } = req.params; 
 
-// @desc   Change state to false
-// @route  PUT /getVisual/dashboard/:state/:id/reject
-// @access Private
-const confirmReject = asyncHandler(async (req, res) => {
-    console.log("reject one");
+    try {
+        let updatedPackage;
+        if (func === "accept") {
+            console.log(`function: ${id}`);
+            updatedPackage = await Package.findByIdAndUpdate(id, { state: true }, { new: true });
+            updatedPackage.save();
+            console.log({updatedPackage});
+
+        } 
+        else if (func === "reject") {
+            console.log(`function: ${func}`);
+            updatedPackage = await Package.findByIdAndUpdate(id, { state: false }, { new: true });
+            updatedPackage.save();
+            console.log({updatedPackage});
+        } 
+        else {
+            res.status(400);
+            throw new Error('Invalid function specified');
+        }
+
+        if (!updatedPackage) {
+            res.status(404);
+            throw new Error('Package not found');
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
 });
 
 module.exports = {
     displayAll,
     displayOne,
-    confirmAccept,
-    confirmReject,
+    updateStatus,
 };

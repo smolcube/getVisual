@@ -8,6 +8,7 @@ import img from '../assets/logoimg1.png';
 import newRequest from '../Utils/newRequest';
 
 export default function Package() {
+
   const { id, state } = useParams();
   const [packageItem, setPackageItem] = useState([]);
 
@@ -16,8 +17,9 @@ export default function Package() {
       try {
         const response = await newRequest.get(`/dashboard/${state}/${id}`);
         setPackageItem(response.data.packageItem);
-        console.log("packageItem fetch is done!!!");
+        console.log("here");
         console.log(packageItem);
+        
 
       } catch (error) {
         console.error('Error fetching packageItem:', error);
@@ -37,11 +39,16 @@ export default function Package() {
           <React.Fragment key={packageItemDets._id}>
             <div className="package__container--image">
               <Link to={`/getVisual/dashboard/pending/${id}/image`}>
-                <img className="shadow" src={img} alt="Package" />
+                <img
+                  className="shadow"
+                  src={img}
+                  alt="Package"
+                />
               </Link>
             </div>
             <div className="package__container--info">
-              <p>{packageItemDets.user.username}</p>
+              <p>{packageItemDets.images[0]}</p>
+              <p>{`اسم المستخدم: ${packageItemDets.user.username}`}</p>
               <p>{`اسم الخدمة: ${packageItemDets.name}`}</p>
               <p>{`الوصف: ${packageItemDets.desc}`}</p>
               <p>{`التصنيف: ${packageItemDets.category}`}</p>

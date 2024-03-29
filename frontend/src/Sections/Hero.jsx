@@ -21,6 +21,8 @@ export default function Hero() {
   } else if (currentUser){
     console.log(acctype, "is logged")
   }
+
+
   return (
     <header className="hero">
       <div className="hero-logo"> {/* This div contains the background image and the text */}
@@ -31,36 +33,25 @@ export default function Hero() {
           </p>
 
           <div className="cta-container">
-            {!notLoggedIn ? (
-              <Link to='/getVisual/signup'>
-                <ButtonCTA
-                  class='pri-cta cta'
-                  function={Register}
-                  name='انضم لنا'
-                />
-              </Link>
-            ) : (
-              <>
-                {admin ? (
-                  <Link to="/getVisual/dashboard">
-                    <ButtonCTA
-                      class='pri-cta cta'
-                      name='Dashboard'
-                    />
-                  </Link>
-                ) : (
-                  <Link to={acctype === 'customer' ? '/browse' : `/getVisual/upload/users/${currentUser.username}/post-package`}>
-                    <ButtonCTA
-                      class='pri-cta cta'
-                      name={acctype === 'customer' ? 'تصفح' : 'نشر خدمة'}
-                    />
-                  </Link>
-                )}
-              </>
-            )}
-          </div>
-        </div>
+          {!notLoggedIn ? (
+          <Link to='/getVisual/signup'>
+            <ButtonCTA
+              class='pri-cta cta'
+              function={Register}
+              name='انضم لنا'
+            />
+          </Link>
+          ) : (
+          <Link to={admin ? '/getVisual/dashboard' : (acctype === 'customer' ? '/browse' : `/getVisual/upload/users/${currentUser.username}/post-package`)}>
+            <ButtonCTA
+              class='pri-cta cta'
+              name={admin ? 'لوحة التحكم' : (acctype === 'customer' ? 'تصفح' : 'نشر خدمة')}
+            />
+          </Link>
+        )}
       </div>
-    </header>
-  );
+    </div>
+  </div>
+</header>
+);
 }
