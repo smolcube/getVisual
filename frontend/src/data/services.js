@@ -33,7 +33,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       img: logoDesignImg,
       phone: logoDesignPhone,
       for:'Skin care line',
-      alt: 'Logo Design', 
+      alt: 'Logo-Design', 
       name: 'تصميم شعار',
       desc: 'creation of a distinctive and visually appealing symbol or graphic mark that represents a company, brand, or organization.',
       tags: [
@@ -48,7 +48,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       img: brandingDesignImg,
       phone: brandingDesignImgPhone,
       for:'',
-      alt: 'Branding Design',
+      alt: 'Branding-Design',
       name: 'تصميم هوية',
       desc: `the creative process of shaping and visually representing a brand's identity, values, and personality through the use of logos, typography, color schemes, and other design elements to establish a distinctive and memorable brand image.`,
       tags: [
@@ -80,7 +80,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       img: printDesignImg,
       phone: printDesignImgPhone,
       for: 'For a coffee shop',
-      alt: 'Print Design', 
+      alt: 'Print-Design', 
       name: 'المطبوعات',
       desc: `Creating visual content and layouts intended for physical, printed materials, such as brochures, posters, magazines, and packaging. It involves the use of typography, images, colors, and other design elements to convey information and aesthetics in a tangible, static format.`,
       tags: [
@@ -96,7 +96,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       img: uiDesignImg,
       phone: uiDesignImgPhone,
       for: '',
-      alt: 'User Interface', 
+      alt: 'User-Interface', 
       name: 'واجهة وتجربة المستخدم',
       desc: `Entails crafting user-friendly digital interfaces for websites and mobile apps. It focuses on layout, aesthetics, and user experience to create engaging online interactions. Designers play a crucial role in delivering a positive and user-friendly digital experience.`,
       tags: [
@@ -141,7 +141,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
     },
 
     { icon: socialMedia, 
-      alt: 'Social media', 
+      alt: 'Social-media', 
       name: 'مواقع التواصل',
       desc: `the creation of visual content, such as images, banners, and ads, tailored for social media platforms. It aims to engage users and enhance brand presence through visually appealing and shareable graphics.`,
       tags: [

@@ -3,25 +3,36 @@ import { FaSearch, FaTimes } from "react-icons/fa";
 
 import ButtonIcon from "./ButtonIcon";
 
+import newRequest from '../Utils/newRequest';
+
 export default function SearchBanner() {
-  console.log('searchbanner')
     
   const [showInput, setShowInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-
-  const handleSearchClick = () => {
-    console.log('search  button clicked')
-    setShowInput(true);
-  };
+  const [searchResult, setSearchResult] = useState([]);
 
   const handleInputChange = (event) => {
     setSearchValue(event.target.value);
   };
 
-  const handleSearch = () => {
-    // Perform search functionality with searchValue
-    console.log("Searching for:", searchValue);
+  const handleSearchClick = () => {
+    console.log('search  button clicked')
+    setShowInput(true);
+    console.log(searchValue);
   };
+
+
+  const handleSearch = async () => {
+
+    try {
+      const response = await newRequest.get(`/getVisual/search?q=${searchValue}`);
+      setSearchResult(response.data);
+    } catch (err) {
+      console.error(err);
+      // Handle errors appropriately (e.g., display error message)
+    }
+  };
+
 
   const handleCloseClick = () => {
     setShowInput(false);
@@ -51,6 +62,16 @@ export default function SearchBanner() {
           <button className="close-button" onClick={handleCloseClick}>
             <FaTimes />
           </button>
+        </div>
+      )}
+      {/* Display search results */}
+      {searchResult.length > 0 && (
+        <div className="search-results shadow2">
+          <ul>
+            {searchResult.map(result => (
+              <li key={result.id}>{result.name}</li>
+            ))}
+          </ul>
         </div>
       )}
     </div>

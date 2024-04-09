@@ -260,6 +260,21 @@ input[type=radio] {
   font-size: 14px;
 }
 
+.search-results {
+  position: absolute;
+  top: 90px;
+  padding-inline: 30px;
+  padding-block: 10px;
+  width: 200px;
+  height: fit-content;
+  background-color: #ffffff;
+  border-radius: 30px;
+}
+.search-results ul {
+  display: grid;
+  gap: 12px;
+}
+
 .service {
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -1169,6 +1184,41 @@ ion-icon {
 }
 .package__container--info p {
   font-size: clamp(0.625rem, 0.405rem + 0.939vw, 1.25rem);
+}
+
+.packageDets {
+  padding: 12.5rem;
+  display: flex;
+  gap: 150px;
+}
+@media (max-width: 37.5em) {
+  .packageDets {
+    padding: 5.3125rem 3.125rem;
+    flex-direction: column;
+    gap: 50px;
+  }
+}
+.packageDets__container--slider img {
+  width: 25rem;
+}
+.packageDets__images {
+  margin-bottom: 100px;
+  position: relative;
+  width: 300px;
+}
+.packageDets__info h4 {
+  text-align: left;
+  margin-bottom: 0.9375rem;
+}
+.packageDets__info--buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6.25rem;
+}
+@media (max-width: 37.5em) {
+  .packageDets__info--buttons {
+    margin-top: 1.25rem;
+  }
 }
 
 .packageSlide {

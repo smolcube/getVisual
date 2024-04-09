@@ -26,34 +26,33 @@ export default function DashTables() {
     const isApproved = location.pathname === '/getVisual/dashboard/approved'; // Check if path indicates pending state
 
     
-  // Fetch package data based on the state
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (isApproved) {
-          // Add query parameter for approved packages ONLY when state is approved
-          const response = await newRequest.get(`/dashboard/${state}`, { params: { state: true } });
-          setPackages(response.data.packages);
-          console.log("APPROVED Packages fetch is done!!!");
-        } 
-        else {
-          // Fetch for other states without the query parameter
-          const response = await newRequest.get(`/dashboard/${state}`);
-          setPackages(response.data.packages);
-          console.log("Packages fetch is done!!!");
-        }
-      console.log(packages);
-      setLoading(false);
-
+// Fetch package data based on the state
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      if (isApproved) {
+        // Fetch approved packages
+        const response = await newRequest.get(`/dashboard/approved`);
+        setPackages(response.data.packages);
+        console.log("Approved Packages fetch is done!!!");
       } 
-      catch (error) {
-        console.error('Error fetching packages:', error);
-        setLoading(true); // Keep loading true in case of errors
+      else {
+        // Fetch for other states without the query parameter
+        const response = await newRequest.get(`/dashboard/${state}`);
+        setPackages(response.data.packages);
+        console.log(`${state} Packages fetch is done!!!`);
       }
-    };
-  
-    fetchData();
-  }, [state]);
+      setLoading(false);
+    } 
+    catch (error) {
+      console.error(`Error fetching ${state} packages:`, error);
+      setLoading(true); // Keep loading true in case of errors
+    }
+  };
+
+  fetchData();
+}, [isApproved, state]);
+
 
   // Function to handle package acceptance (clicking accept button)
   const handleAccept = async (packageItem) => {

@@ -8,21 +8,22 @@ const Package = require('../models/packageModel');
 // @route  GET /getVisual/dashboard/:state
 // @access Private
 const displayAll = asyncHandler(async (req, res) => {
+    
     console.log("display all");
-
     const { state } = req.params;
-    if (state === "pending" || "rejected"){
+
+    if (state === "approved"){
     try {
-        const packages = await Package.find({ state: false }).populate('user', 'username');
+        const packages = await Package.find({ state: true }).populate('user', 'username');
         res.status(200).json({ packages });
     } catch (error) {
-        console.error('Error fetching packages:', error);
+        console.error(`Error fetching ALL ${state} packages:`, error);
         res.status(500).json({ message: 'Server error' });
     }
     } 
-    else if (state === "approved"){
+    else if ( "pending" || "rejected" ){
         try {
-            const packages = await Package.find({ state: true }).populate('user', 'username');
+            const packages = await Package.find({ state: false }).populate('user', 'username');
             res.status(200).json({ packages });
         } catch (error) {
             console.error('Error fetching packages:', error);
@@ -45,12 +46,23 @@ const displayOne = asyncHandler(async (req, res) => {
     // display one approved packageItemsDets
     if (state === "pending"){
         try {
-            const packageItem = await Package.find({ _id:id ,state: false })
+            const packageItem = await Package.find({ _id:id , state: false })
                                         .populate('user', 'username')
             res.status(200).json({ packageItem });
             console.log("display ", packageItem);
         } catch (error) {
-            console.error('Error fetching packages:', error);
+            console.error('Error fetching ONE PENDDING package:', error);
+            res.status(500).json({ message: 'Server error' });
+        }
+    }
+    else if ( state === "approved" ){
+        try {
+            const packageItem = await Package.find({ _id:id , state: true })
+                                        .populate('user', 'username')
+            res.status(200).json({ packageItem });
+            console.log("display ", packageItem);
+        } catch (error) {
+            console.error('Error fetching ONE package:', error);
             res.status(500).json({ message: 'Server error' });
         }
     }

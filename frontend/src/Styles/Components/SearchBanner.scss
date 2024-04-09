@@ -52,3 +52,18 @@
     font-size: 14px;
   }
   
+  .search-results{
+    position: absolute;
+    top: 90px;
+    padding-inline: 30px;
+    padding-block: 10px;
+    width: 200px;
+    height: fit-content;
+    background-color: $white;
+    border-radius: 30px;
+
+    ul{
+      display: grid;
+      gap: 12px;
+    }
+  }

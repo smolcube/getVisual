@@ -13,12 +13,13 @@ import PostPackage from './Pages/PostPackage';
 import Profile from './Pages/Profile';
 import Settings from './Pages/Settings.jsx';
 import Package from './Pages/Package';
-import PackageSlide from './Pages/PackageSlide.jsx'
+import PackageSlide from './Pages/PackageSlide'
 
 import Hero from './Sections/Hero';
 import About from './Sections/About';
 import Services from './Sections/Services';
 import CategoryDets from './Pages/CategoryDets';
+import PackageDets from './Pages/PackageDets.jsx';
 import FAQs from './Sections/FAQs';
 import Contact from './Sections/Contact';
 import Footer from './Sections/Footer';
@@ -57,7 +58,8 @@ function App() {
                 
 
         <Route path="/getVisual/services/category-details/:categoryName" element={<CategoryDets />}/>
-        
+        <Route path="/getVisual/services/category-details/:categoryName/:name" element={<PackageDets />}/>
+
         <Route path="/getVisual/upload/users/:username/post-package" element={<PostPackage/>}/>
 
         <Route path="/getVisual/users/:username" element={<Profile />}/>
