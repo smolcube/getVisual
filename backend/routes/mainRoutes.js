@@ -24,7 +24,7 @@ router.post('/auth/forgot-password', forgotPass);
 router.get('/auth/forgot-password/reset-password/:passwordResetToken', verifyUser);
 router.post('/auth/forgot-password/reset-password/:passwordResetToken', resetPass);
 
-router.get('/profile/:username', getProfile);
+router.get('/profile/:username', private, getProfile);
 router.delete('/profile/:username/:packageId', deletePackage)
 
 router.get('/search/:searchValue', search);

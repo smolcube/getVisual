@@ -82,11 +82,15 @@ const getProfile = asyncHandler(async (req, res) => {
   const username = req.params.username; // Access the 'username' parameter from the URL
   
   try {
+    const { authCookie } = req.cookie.authCookie;
+        
     // Find the user by username in the database
     const profile = await User.findOne({ username });
 
     if (!profile) {
       return res.status(404).json({ message: 'profile not found' });
+    } else if ( !authCookie ) {
+      return res.status(400).json({ message: 'not Auth' });
     }
 
    // Fetch packages associated with the user
