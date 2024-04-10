@@ -8,6 +8,7 @@ const { login, getProfile } = require('../controllers/loginController')
 const { forgotPass ,verifyUser,  resetPass } = require('../controllers/passResetingController')
 const { search } = require('../controllers/searchController')
 const { private } = require('../middleware/authHandler');
+const imageController = require('../controllers/imagesController');
 
 // Main routes
 router.get('/', main); // Visitors and there should be another on for registered
@@ -26,6 +27,10 @@ router.post('/auth/forgot-password/reset-password/:passwordResetToken', resetPas
 router.get('/profile/:username', private, getProfile);
 
 router.get('/search', search);
+
+
+// Define route to serve images
+router.get('/images/:imageName', imageController.serveImage);
 
 
 module.exports = router;

@@ -14,7 +14,7 @@ export default function Footer() {
         <li><a href="/#">User Interface</a></li>
       </ul>
       <ul>
-        <li><a href="/#">Psckaging</a></li>
+        <li><a href="/#">Packaging</a></li>
         <li><a href="/#">Motion</a></li>
         <li><a href="/#">Print design</a></li>
         <li><a href="/#">Print design</a></li>

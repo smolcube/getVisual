@@ -11,6 +11,7 @@ import Logout from './Components/Logout';
 
 import PostPackage from './Pages/PostPackage';
 import Profile from './Pages/Profile';
+import ProfilePackages from './Pages/ProfilePackages.jsx'
 import Settings from './Pages/Settings.jsx';
 import Package from './Pages/Package';
 import PackageSlide from './Pages/PackageSlide'
@@ -63,6 +64,7 @@ function App() {
         <Route path="/getVisual/upload/users/:username/post-package" element={<PostPackage/>}/>
 
         <Route path="/getVisual/users/:username" element={<Profile />}/>
+        <Route path="/getVisual/users/:username/:package" element={<ProfilePackages />}/>
         <Route path="/getVisual/upload/users/:username/settings" element={<Settings />}/>
 
 

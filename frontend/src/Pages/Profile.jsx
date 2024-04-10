@@ -9,6 +9,9 @@ import servicesImg2 from '../assets/logoimg1.png';
 import servicesImg3 from '../assets/logoimg2.png';
 import servicesImg4 from '../assets/logoimg3.png';
 
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const username = currentUser?.username;
+
 const Profile = () => {
   return (
     <div className="profile">
@@ -19,7 +22,7 @@ const Profile = () => {
             src={user} alt="Profile" 
           />
 
-        <span className="profile__username">@Username</span>
+        <span className="profile__username">@{currentUser ? currentUser.username : ""}</span>
         <span className="profile__joined-on faded">انضم في فبراير 2023</span>
         
         <div className="profile__extra-info">

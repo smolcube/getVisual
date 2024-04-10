@@ -1,14 +1,40 @@
-@use '../utils/' as *;
+@use '../utils/'as*;
 
-.sidebar{
-    margin-block: rem(150);
-    margin-inline: rem(60);
+.sidebar {
+    padding-top: 150px;
+    background-color:$background ;
+    display: flex;
+    flex-direction: column;
 
     &__menu{
-        margin-top: rem(20);
-        padding-right: rem(60);
-        display: grid;
-        gap: rem(120);
-        border-right: 2px solid $blue;
+        display: flex;
+        flex-direction: column;
+        gap: 90px;
     }
+}
+
+.container {
+    background-color: white;
+    border-radius: 50px;
+    padding: 100px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    gap: 700px;
+}
+
+.settings {
+}
+
+.options {
+    flex: 1;
+}
+
+.options__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.options__list li {
+    margin-bottom: 10px;
 }

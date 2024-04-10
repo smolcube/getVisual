@@ -1,0 +1,44 @@
+@use '../utils/' as *;
+
+.profilePackages {
+    padding: rem(200);
+    display: flex;
+    gap: 150px;
+
+    @include max-width(small) {
+        padding: rem(85) rem(50);
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    &__container {
+        &--slider {
+            img {
+                width: rem(400);
+            }
+        }
+    }
+
+    &__images {
+        margin-bottom: 100px;
+        position: relative;
+        width: 300px;
+    }
+
+    &__info {
+        h4 {
+            text-align: left;
+            margin-bottom: rem(15);
+        }
+
+        &--buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: rem(100);
+
+            @include max-width(small) {
+                margin-top: rem(20);
+            }
+        }
+    }
+}
