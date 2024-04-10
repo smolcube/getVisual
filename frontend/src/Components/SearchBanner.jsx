@@ -1,79 +1,94 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+
 import { FaSearch, FaTimes } from "react-icons/fa";
 
 import ButtonIcon from "./ButtonIcon";
-
 import newRequest from '../Utils/newRequest';
 
 export default function SearchBanner() {
-    
-  const [showInput, setShowInput] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
+ const [showInput, setShowInput] = useState(false);
+ const [searchValue, setSearchValue] = useState("");
+ const [searchResult, setSearchResult] = useState({ users: [], packages: [] });
 
-  const handleInputChange = (event) => {
-    setSearchValue(event.target.value);
-  };
+ const handleInputChange = (event) => {
+   setSearchValue(event.target.value);
+ };
 
-  const handleSearchClick = () => {
-    console.log('search  button clicked')
-    setShowInput(true);
-    console.log(searchValue);
-  };
+ const handleSearchClick = () => {
+   setShowInput(true);
+ };
 
+ const handleSearch = async () => {
+  try {
+    const response = await newRequest.get(`/search/${searchValue}`);
+    console.log("hit")
+    setSearchResult(response.data);
+    console.log(response);
 
-  const handleSearch = async () => {
-
-    try {
-      const response = await newRequest.get(`/getVisual/search?q=${searchValue}`);
-      setSearchResult(response.data);
     } catch (err) {
-      console.error(err);
-      // Handle errors appropriately (e.g., display error message)
-    }
-  };
+    console.error(err);
+  }
+};
 
 
-  const handleCloseClick = () => {
-    setShowInput(false);
-    setSearchValue("");
-  };
+ const handleCloseClick = () => {
+   setShowInput(false);
+   setSearchValue("");
+ };
 
-  return (
-    <div className="search-banner">
-      {!showInput ? (
-        <ButtonIcon 
-          className="search-icon" 
-          onClick={handleSearchClick}
-          id="search"
-          ionicon="search-outline"
-        />
-      ) : (
-        <div className="search-input">
-          <input
-            type="text"
-            placeholder="Search here"
-            value={searchValue}
-            onChange={handleInputChange}
-          />
-          <button className="search-button" onClick={handleSearch}>
-            <FaSearch />
-          </button>
-          <button className="close-button" onClick={handleCloseClick}>
-            <FaTimes />
-          </button>
-        </div>
-      )}
-      {/* Display search results */}
-      {searchResult.length > 0 && (
-        <div className="search-results shadow2">
-          <ul>
-            {searchResult.map(result => (
-              <li key={result.id}>{result.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
+ return (
+   <div className="search-banner">
+     {!showInput ? (
+       <ButtonIcon 
+         className="search-icon" 
+         onClick={handleSearchClick}
+         id="search"
+         ionicon="search-outline"
+       />
+     ) : (
+       <div className="search-input">
+         <input
+           type="text"
+           placeholder="Search here"
+           value={searchValue}
+           onChange={handleInputChange}
+         />
+         <button className="search-button" onClick={handleSearch}>
+           <FaSearch />
+         </button>
+         <button className="close-button" onClick={handleCloseClick}>
+           <FaTimes />
+         </button>
+       </div>
+     )}
+     {/* Display search results */}
+     {searchResult.users.length > 0 && (
+       <div className="search-results shadow2">
+         <h4>Users</h4>
+         <br />
+         <hr />
+         <br />
+         <ul>
+           {searchResult.users.map(user => (
+             <li key={user._id}><Link to={`/getVisual/users/${user.username}`}>{user.username}</Link></li>
+           ))}
+         </ul>
+       </div>
+     )}
+     {searchResult.packages.length > 0 && (
+       <div className="search-results shadow2">
+         <h4>Packages</h4>
+         <br />
+         <hr />
+         <br />
+         <ul>
+           {searchResult.packages.map(pkg => (
+             <li key={pkg._id}><Link to={`/getVisual/package/${pkg._id}`}>{pkg.name}</Link></li>
+           ))}
+         </ul>
+       </div>
+     )}
+   </div>
+ );
 }

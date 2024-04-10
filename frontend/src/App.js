@@ -60,6 +60,7 @@ function App() {
 
         <Route path="/getVisual/services/category-details/:categoryName" element={<CategoryDets />}/>
         <Route path="/getVisual/services/category-details/:categoryName/:name" element={<PackageDets />}/>
+        <Route path="/getVisual/package/:id" element={<PackageDets />}/>
 
         <Route path="/getVisual/upload/users/:username/post-package" element={<PostPackage/>}/>
 

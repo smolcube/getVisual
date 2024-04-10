@@ -35,7 +35,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       for:'Skin care line',
       alt: 'Logo-Design', 
       name: 'تصميم شعار',
-      desc: 'creation of a distinctive and visually appealing symbol or graphic mark that represents a company, brand, or organization.',
+      desc: 'إنشاء رمز مميز وجذاب بصريًا أو علامة رسومية تمثل شركة أو علامة تجارية أو منظمة.',
       tags: [
         'Minimalist logo', 
         'Vintage Logo', 
@@ -50,7 +50,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       for:'',
       alt: 'Branding-Design',
       name: 'تصميم هوية',
-      desc: `the creative process of shaping and visually representing a brand's identity, values, and personality through the use of logos, typography, color schemes, and other design elements to establish a distinctive and memorable brand image.`,
+      desc: `عملية الإبداع في تشكيل وتمثيل هوية العلامة التجارية وقيمها وشخصيتها بصريًا من خلال استخدام الشعارات وأنماط الخط ومخططات الألوان وعناصر التصميم الأخرى لإنشاء صورة علامة تجارية مميزة ولا تُنسى.`,
       tags: [
         'Brand Identity',
         'Stationery Design', 
@@ -66,7 +66,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       for:'simple illustration',
       alt: 'Illustration', 
       name: 'الفن والرسوم التوضيحية',
-      desc: `Illustration involves the creation of visual narratives through various art forms, including character illustration, digital illustrations, concept art, children's book illustrations, and fantasy illustrations.`,
+      desc: `يشمل الرسم إنشاء سرد بصري من خلال أشكال فنية مختلفة، بما في ذلك رسم الشخصيات والرسوم التوضيحية الرقمية وفن السيناريو ورسوم كتب الأطفال ورسوم الخيال`,
       tags: [
         'Character Illustration',
         'Digital Illustrations',
@@ -82,7 +82,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       for: 'For a coffee shop',
       alt: 'Print-Design', 
       name: 'المطبوعات',
-      desc: `Creating visual content and layouts intended for physical, printed materials, such as brochures, posters, magazines, and packaging. It involves the use of typography, images, colors, and other design elements to convey information and aesthetics in a tangible, static format.`,
+      desc: `إنشاء محتوى بصري وتخطيطات مقصودة للمواد المطبوعة المادية، مثل الكتيبات والملصقات والمجلات والتغليف. يشمل استخدام أساليب الطباعة والصور والألوان وعناصر التصميم الأخرى لنقل المعلومات والجماليات في شكل ثابت وملموس`,
       tags: [
         "Brochure Design",
         "Flyer Design",
@@ -98,7 +98,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       for: '',
       alt: 'User-Interface', 
       name: 'واجهة وتجربة المستخدم',
-      desc: `Entails crafting user-friendly digital interfaces for websites and mobile apps. It focuses on layout, aesthetics, and user experience to create engaging online interactions. Designers play a crucial role in delivering a positive and user-friendly digital experience.`,
+      desc: `تتضمن صياغة واجهات رقمية سهلة الاستخدام للمواقع الإلكترونية وتطبيقات الهواتف المحمولة. تركز على التخطيط والجماليات وتجربة المستخدم لإنشاء تفاعلات عبر الإنترنت مشوقة. يلعب المصممون دورًا حاسمًا في تقديم تجربة رقمية إيجابية وسهلة الاستخدام للمستخدم`,
       tags: [
         "Website Design",
         "Mobile App Interface Design",
@@ -113,8 +113,8 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       phone: packagingDesignImgPhone,
       for: 'Healthy Chocolate package',
       alt: 'Packaging', 
-      name: 'التعبئة والتغليف',
-      desc: `The art of creating visually appealing and functional packaging for products. It involves the strategic use of graphics, colors, and structural elements to attract consumers, convey information, and protect the contents. Effective package design plays a significant role in marketing and branding, influencing consumer choices on the retail shelf.`,
+      name: 'التعبئة والتغليف',      
+      desc: `فن إنشاء تعبئة وتغليف جذابة بصريًا ووظيفية للمنتجات. يتضمن الاستخدام الاستراتيجي للرسومات والألوان والعناصر الهيكلية لجذب المستهلكين ونقل المعلومات وحماية المحتوى. يلعب التصميم الفعال للعبوة دورًا كبيرًا في التسويق والعلامة التجارية، ويؤثر في اختيارات المستهلكين على الرف التجاري.`,
       tags: [
         "Product Packaging",
         "Label Design",
@@ -130,7 +130,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
       for:'',
       alt: 'Motion', 
       name: 'التحريك',
-      desc: `Combines visual elements, text, and audio to create animated content. It is often used in multimedia, advertising, and video production to convey information, tell stories, or enhance the visual appeal of video presentations.`,
+      desc: `يجمع بين العناصر البصرية والنصية والصوتية لإنشاء محتوى متحرك. يُستخدم غالبًا في الوسائط المتعددة والإعلانات وإنتاج الفيديو لنقل المعلومات أو سرد القصص أو تعزيز جاذبية العروض المرئية`,
       tags: [
         "Explainer Videos",
         "Logo Animations",
@@ -143,7 +143,7 @@ import motionImgPhone from './categories/motionImg-phone.jpg';
     { icon: socialMedia, 
       alt: 'Social-media', 
       name: 'مواقع التواصل',
-      desc: `the creation of visual content, such as images, banners, and ads, tailored for social media platforms. It aims to engage users and enhance brand presence through visually appealing and shareable graphics.`,
+      desc: `إنشاء محتوى بصري، مثل الصور واللافتات والإعلانات، مصممة خصيصًا لمنصات التواصل الاجتماعي. يهدف إلى جذب المستخدمين وتعزيز وجود العلامة التجارية من خلال رسومات جذابة بصريًا وقابلة للمشاركة.`,
       tags: [
         "Social Media Posts",
         "Cover and Banner Design",

@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import ButtonIcon from './ButtonIcon';
 import profileImg from '../assets/user.svg';
 
+import defaultIMG from '../assets/img3.png';
+
 export default function ServiceCard(props) {
   const location = useLocation();
   const isProfile = location.pathname === '/getVisual/users/rokaia'; 
@@ -47,7 +49,7 @@ export default function ServiceCard(props) {
           <div className="service-description">
             {props.description}
           </div>
-          <div className="service-price">{props.price} 
+          <div className="service-price">{props.price} LYD
             <ButtonIcon
               ionicon="trash-outline"
               onClick={handleDelete} // Call handleDelete function on click

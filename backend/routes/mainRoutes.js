@@ -6,7 +6,7 @@ const { main, logout } = require('../controllers/mainController');
 const { register, confirmEmail } = require('../controllers/registerController');
 const { login, getProfile, deletePackage } = require('../controllers/loginController')
 const { forgotPass ,verifyUser,  resetPass } = require('../controllers/passResetingController')
-const { search } = require('../controllers/searchController')
+const { search, package } = require('../controllers/searchController')
 const { private } = require('../middleware/authHandler');
 const imageController = require('../controllers/imagesController');
 
@@ -27,8 +27,8 @@ router.post('/auth/forgot-password/reset-password/:passwordResetToken', resetPas
 router.get('/profile/:username', getProfile);
 router.delete('/profile/:username/:packageId', deletePackage)
 
-router.get('/search', search);
-
+router.get('/search/:searchValue', search);
+router.get('/package/:id', package);
 
 // Define route to serve images
 router.get('/images/:imageName', imageController.serveImage);
