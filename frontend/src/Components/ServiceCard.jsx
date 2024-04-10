@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
 import ButtonIcon from './ButtonIcon';
 import profileImg from '../assets/user.svg';
 
 export default function ServiceCard(props) {
-  const [star, setStar] = useState(0.0);
+  const location = useLocation();
+  const isProfile = location.pathname === '/getVisual/users/rokaia'; 
 
+  const [star, setStar] = useState(0.0);
   const name = "Service-name";
 
-  // Assuming you have access to the user's account type
-  const currentUser = localStorage.getItem('currentUser');
-
   const handleStarClick = () => {
-    if (currentUser === "customer") {
-      setStar(star + 1.0);
+    // Handle star click functionality
+  };
 
-      // Here you can add code to update the review collection in the database
-      // with the customer id and the package id
-    } else {
-      // Optionally, you can provide feedback to the user that they need to be a customer to add a review
-      alert("You need to be a customer to add a review.");
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete this package?")) {
+      props.deletePackage(); // Call deletePackage function passed as prop
     }
   };
 
@@ -28,29 +26,56 @@ export default function ServiceCard(props) {
       <div className="service-image">
         <Link to={`${name}`}>
           <img src={props.servicesImg} alt="Service image" />
-        </Link>
+        </Link> 
       </div>
 
-      <div className="service-details">
-        <div className="service-details__links">
-          <div className='service-details__links--user'>
-            <img src={profileImg} alt="" />
-            <h4 className="service-name">{name}</h4>
+      {isProfile ? (
+        <div className="service-details">
+          <div className="service-details__links">
+            <div className='service-details__links--user'>
+              <img src={profileImg} alt="" />
+              <h4 className="service-name">{name}</h4>
+            </div>
+            <div className="service-rating">
+              <ButtonIcon 
+                onClick={handleStarClick}
+                ionicon="star-outline"
+              />
+              {star}
+            </div>
           </div>
-          <div className="service-rating">
-            <ButtonIcon 
-              onClick={handleStarClick}
-              ionicon="star-outline"
+          <div className="service-description">
+            {props.description}
+          </div>
+          <div className="service-price">{props.price} 
+            <ButtonIcon
+              ionicon="trash-outline"
+              onClick={handleDelete} // Call handleDelete function on click
             />
-            {star}
           </div>
         </div>
-
-        <div className="service-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      ) : (
+        // Render other details if not in profile
+        <div className="service-details">
+          <div className="service-details__links">
+            <div className='service-details__links--user'>
+              <img src={profileImg} alt="" />
+              <h4 className="service-name">{name}</h4>
+            </div>
+            <div className="service-rating">
+              <ButtonIcon 
+                onClick={handleStarClick}
+                ionicon="star-outline"
+              />
+              {star}
+            </div>
+          </div>
+          <div className="service-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </div>
+          <div className="service-price">20 ~ 80 LYD</div>
         </div>
-        <div className="service-price">30~80 LYD</div>
-      </div>
+      )}
     </div>
   );
-};
+}

@@ -11,6 +11,7 @@ const { cookieToken } = require('../utils/cookieToken');
 // Import models
 const User = require('../models/userModel');
 const Customer = require('../models/customerModel');
+const Package = require('../models/packageModel');
 
 // @desc   Login
 // @route  POST /getvisual/login|signin
@@ -88,19 +89,54 @@ const getProfile = asyncHandler(async (req, res) => {
       return res.status(404).json({ message: 'profile not found' });
     }
 
-    // Return the user's profile information
-    res.status(200).json({ username: profile.username, email: profile.email, /* Add other profile fields here */ });
-  } 
-  catch (error) {
-    // Handle any errors that occur during the database query
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
-  }
-  
+   // Fetch packages associated with the user
+   const packages = await Package.find({ user: profile._id });
 
+   // Return the user's profile information along with the fetched packages
+   res.status(200).json({packages});
+   console.log(packages);
+
+ } catch (error) {
+   // Handle any errors that occur during the database query
+   console.error(error);
+   res.status(500).json({ message: 'Server Error' });
+ }
+});
+
+
+
+// @desc   Delete a package
+// @route  DELETE /profile/:username/:packageId
+// @access Private
+const deletePackage = asyncHandler(async (req, res) => {
+  
+  const { username, packageId } = req.params;
+  console.log(username, packageId);
+
+  const user = await User.findOne({ username: username });
+  const id = user._id;
+
+  try {
+    // Find the package in the database
+    const package = await Package.findOne({ _id: packageId, user: id });
+
+    if (!package) {
+      return res.status(404).json({ message: 'Package not found' });
+    } else if (package) {
+      // Delete the package
+      console.log("DELETED PACKAGE", package);
+      await package.deleteOne();
+    }
+  } catch (err) {
+    console.error("Error deleting package:", err);
+    res.status(500).json({ message: 'Failed to delete package' });
+  }
+
+  res.json({ message: 'Package deleted successfully' });
 });
 
 module.exports = {
   login,
   getProfile,
+  deletePackage,
 };
