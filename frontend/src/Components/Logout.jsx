@@ -8,6 +8,8 @@ const LogoutButton = () => {
     try {
       // Send a POST request to log out the user
       await axios.post('/getVisual/auth/logout');
+
+      console.log("log")
       
       // Clear localStorage items named 'currentUser' and 'Admin' if they exist
       if (localStorage.getItem('currentUser')) {
