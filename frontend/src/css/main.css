@@ -826,7 +826,7 @@ ion-icon {
 }
 .categoryDets__left-column--card .paragraph p {
   padding-inline: 1.25rem;
-  margin-block-start: 1.875rem;
+  padding-block: 1.875rem;
 }
 .categoryDets__right-column {
   padding-inline: 1.875rem;
