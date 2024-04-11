@@ -45,7 +45,9 @@ const private =asyncHandler(async (req, res, next) =>{
   const isAuth = req.cookies.authCookie;
 
   if (!isAuth) {
+    console.log("not auth");
     res.status(401).json({ message: "not authorized" });
+    
   } else {
   // Check token's id
   try {

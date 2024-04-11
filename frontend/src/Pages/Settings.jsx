@@ -23,7 +23,7 @@ export default function Settings() {
     return (
         <aside className='sidebar'>
             <h1>Settings</h1>
-            <div className='container'>
+            <div className='wrapper'>
                 <div className='settings'>
                     <ul className='sidebar__menu'>
                         {settings.map((sett, index) => (

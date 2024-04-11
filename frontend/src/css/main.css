@@ -1394,7 +1394,7 @@ ion-icon {
   gap: 90px;
 }
 
-.container {
+.wrapper {
   background-color: white;
   border-radius: 50px;
   padding: 100px;

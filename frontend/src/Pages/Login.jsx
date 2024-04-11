@@ -8,6 +8,8 @@ import TextField from '../Components/TextField';
 import ButtonIcon from '../Components/ButtonIcon'; 
 import ButtonCTA from '../Components/ButtonCTA';
 
+import imgWide from "../assets/createAccount-wide.jpg";
+
 export default function Login() {
 // to handle input state
   const [input, setInput] = useState ({
@@ -150,11 +152,14 @@ const handleSubmit= async (e) =>{
 
       <div className="container__column2">
       <img
-        src={process.env.PUBLIC_URL + '../assets/createAccount-wide.jpg'}
-        srcSet={`${process.env.PUBLIC_URL + '../assets/createAccount-small.jpg'} 600w, ${process.env.PUBLIC_URL + '../assets/createAccount-mid.jpg'} 900w, ${process.env.PUBLIC_URL + '../assets/createAccount-wide.jpg'} 1212w`}
-        sizes="(max-width: 1212px) 100vw, 1212px"
-        alt=""
-      />
+          src={imgWide}
+          srcSet='
+            ../assets/createAccount-small.jpg 600w, 
+            ../assets/createAccount-mid.jpg 900w, 
+            ../assets/createAccount-wide.jpg 1212w'
+          sizes="(max-width: 1212px) 100vw, 1212px"
+          alt=""
+        />
       </div>
 
     </div>  
