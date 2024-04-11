@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+
 import ButtonCTA from '../Components/ButtonCTA';
 import ServiceCard from '../Components/ServiceCard';
+
 import newRequest from '../Utils/newRequest';
+
 import user from '../assets/user.svg';
 
 const Profile = () => {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+  const { username } = useParams();
+
   const [packages, setPackages] = useState([]);
 
   const fetchPackages = async () => {
     try {
-      const response = await newRequest.get(`/profile/${currentUser.username}`);
+      const response = await newRequest.get(`/profile/${currentUser.username || username}`);
       setPackages(response.data.packages); // Assuming packages are nested under a 'packages' property
       console.log("Packages fetch is done!!!");
     } catch (error) {
@@ -38,7 +44,7 @@ const Profile = () => {
     <div className="profile">
       <div className="profile__left-column">
         <img className='profile__image' src={user} alt="Profile" />
-        <span className="profile__username">@{currentUser ? currentUser.username : ""}</span>
+        <span className="profile__username">@{currentUser ? currentUser.username : username}</span>
         <span className="profile__joined-on faded">انضم في فبراير 2023</span>
         
         <div className="profile__extra-info">
