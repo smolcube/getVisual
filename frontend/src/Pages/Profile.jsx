@@ -39,15 +39,15 @@ const Profile = () => {
       <div className="profile__left-column">
         <img className='profile__image' src={user} alt="Profile" />
         <span className="profile__username">@{currentUser ? currentUser.username : ""}</span>
-        <span className="profile__joined-on faded">Joined in February 2023</span>
+        <span className="profile__joined-on faded">انضم في فبراير 2023</span>
         
         <div className="profile__extra-info">
-          <p className="content">Description</p>
+          <p className="content">الوصف</p>
           <p className="profile__content">
-            Hello, I'm a graphic designer specialized in logo design.
+            مرحـبا انا مصمم جرافيكس مختص بتصميم الشعارات
           </p>
         </div>
-        <ButtonCTA class='pri-cta cta' name='Contact me' />
+        <ButtonCTA class='pri-cta cta' name='تواصل معي' />
       </div>
 
       <div className="profile__right-column">

@@ -1304,8 +1304,16 @@ ion-icon {
   margin-block-end: 1.875rem;
   border-right: 2px solid #8080FF;
 }
+@media (max-width: 71.8125em) {
+  .profile__left-column {
+    padding-block: 50px;
+    padding-inline: 0;
+    margin: auto;
+    border: none;
+  }
+}
 .profile__left-column img {
-  width: 12.5rem;
+  width: 30%;
   padding-bottom: 0.9375rem;
 }
 .profile__left-column button {
@@ -1319,7 +1327,7 @@ ion-icon {
   border-bottom: solid #7890A8 2px;
 }
 .profile__content {
-  font-size: 1.1875rem;
+  font-size: clamp(0.625rem, 0.427rem + 0.845vw, 1.188rem);
 }
 .profile__right-column {
   padding-inline: 1.875rem;

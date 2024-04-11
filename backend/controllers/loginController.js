@@ -82,7 +82,7 @@ const getProfile = asyncHandler(async (req, res) => {
   const username = req.params.username; // Access the 'username' parameter from the URL
   
   try {
-    const { authCookie } = req.cookie.authCookie;
+    const { authCookie } = req.cookies.authCookie;
         
     // Find the user by username in the database
     const profile = await User.findOne({ username });
