@@ -163,7 +163,7 @@ export default function Navbar() {
           !isDash && ( // Only show login button if not in dashboard
             <Link to='/getVisual/login'>
               <ButtonCTA
-                class='sec-cta cta'
+                className='sec-cta cta'
                 function={Login}
                 name='تسجيل الدخول'
               />
