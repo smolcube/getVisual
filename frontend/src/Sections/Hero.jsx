@@ -36,7 +36,7 @@ export default function Hero() {
           {!notLoggedIn ? (
           <Link to='/getVisual/signup'>
             <ButtonCTA
-              class='pri-cta cta'
+              className='pri-cta cta'
               function={Register}
               name='انضم لنا'
             />
@@ -44,7 +44,7 @@ export default function Hero() {
           ) : (
           <Link to={admin ? '/getVisual/dashboard' : (acctype === 'customer' ? '/browse' : `/getVisual/upload/users/${currentUser.username}/post-package`)}>
             <ButtonCTA
-              class='pri-cta cta'
+              className='pri-cta cta'
               name={admin ? 'لوحة التحكم' : (acctype === 'customer' ? 'تصفح' : 'نشر خدمة')}
             />
           </Link>

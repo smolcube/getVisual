@@ -6,7 +6,6 @@ import img1 from '../assets/logoimg1-1.png';
 import img2 from '../assets/logoimg1-2.png';
 import img3 from '../assets/logoimg1-3.png';
 
-import ButtonIcon from '../Components/ButtonIcon';
 import ButtonCTA from '../Components/ButtonCTA'
 
 export default function ProfilePackages() {
@@ -66,7 +65,7 @@ export default function ProfilePackages() {
         <div className='profilePackages__info--buttons'>
           <h6>30 LYD</h6>
           <ButtonCTA 
-            class="pri-cta cta order"
+            className="pri-cta cta order"
             type="submit"
             name="حذف"
             //onClick={}

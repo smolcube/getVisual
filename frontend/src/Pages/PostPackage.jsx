@@ -177,7 +177,7 @@ export default function PostPackage() {
             <label htmlFor="file" className='label'>Image</label>
             <label htmlFor="file">+</label>
           </div>
-          <ButtonCTA class="pri-cta cta" name="إرسال" />
+          <ButtonCTA className="pri-cta cta" name="إرسال" />
           {message && <div className="messages">{message}</div>}
         </form>
       </div>

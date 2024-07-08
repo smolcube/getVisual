@@ -11,8 +11,7 @@ export default function UploadField(props) {
       </label>
 
       <input
-        className={inputClassName}
-        classname2={props.classname2}
+        className={`${inputClassName} ${props.classname2}`} // Adjusted classname2
         type={props.type}
         id={props.id}
         placeholder={props.placeholder}

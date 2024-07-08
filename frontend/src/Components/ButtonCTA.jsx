@@ -1,16 +1,15 @@
-
-import React from 'react'
+import React from 'react';
 
 export default function ButtonCTA(props) {
   return (
     <div>
-    <button 
+      <button 
         id={props.id}
-        className={props.class}
+        className={props.className}
         type={props.type}
-        onClick={props.function}>
+        onClick={props.onClick}>
         {props.name}
       </button>
     </div>
-  )
+  );
 }

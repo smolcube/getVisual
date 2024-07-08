@@ -53,7 +53,7 @@ const Profile = () => {
             مرحـبا انا مصمم جرافيكس مختص بتصميم الشعارات
           </p>
         </div>
-        <ButtonCTA class='pri-cta cta' name='تواصل معي' />
+        <ButtonCTA className='pri-cta cta' name='تواصل معي' />
       </div>
 
       <div className="profile__right-column">

@@ -166,7 +166,7 @@ useEffect(() => {
     <h3>تــأكيـد</h3>
     <p>هل تريد الموافقة على نشر هذه الخدمة؟</p>
     <Link to={`/getVisual/dashboard/${state}/${modalType}/${selectedPackage._id}`}>
-      <ButtonCTA id='accept' class='pri-cta cta' name='نعم' function={confirmAccept} />
+      <ButtonCTA id='accept' className='pri-cta cta' name='نعم' function={confirmAccept} />
     </Link>
   </Modal>
 )}
@@ -176,7 +176,7 @@ useEffect(() => {
     <h3>تــأكيـد</h3>
     <p>هل تريد رفض نشر هذه الخدمة؟</p>
     <Link to={`/getVisual/dashboard/${state}/${modalType}/${selectedPackage._id}`}>
-      <ButtonCTA id='reject' class='pri-cta cta' name='نعم' function={confirmReject} />
+      <ButtonCTA id='reject' className='pri-cta cta' name='نعم' function={confirmReject} />
     </Link>
   </Modal>
 )}

@@ -8,55 +8,40 @@ import img from '../assets/logoimg1.png';
 import newRequest from '../Utils/newRequest';
 
 export default function Package() {
-
   const { id, state } = useParams();
-  const [packageItem, setPackageItem] = useState([]);
+  const [packageItem, setPackageItem] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await newRequest.get(`/dashboard/${state}/${id}`);
         setPackageItem(response.data.packageItem);
-        console.log("here");
-        console.log(packageItem);
-        
-
       } catch (error) {
         console.error('Error fetching packageItem:', error);
-        console.log(packageItem);
-
       }
     };
 
     fetchData();
-  }, [id]);
+  }, [id, state]);
 
   return (
     <div className="package">
       <h3>تفاصيل الخدمة</h3>
       <div className="package__container">
-      {packageItem.map((packageItemDets) => (
-          <React.Fragment key={packageItemDets._id}>
-            <div className="package__container--image">
-              <Link to={`/getVisual/dashboard/pending/${id}/image`}>
-                <img
-                  className="shadow"
-                  src={img}
-                  alt="Package"
-                />
-              </Link>
-            </div>
-            <div className="package__container--info">
-              <p>{packageItemDets.images[0]}</p>
-              <p>{`اسم المستخدم: ${packageItemDets.user.username}`}</p>
-              <p>{`اسم الخدمة: ${packageItemDets.name}`}</p>
-              <p>{`الوصف: ${packageItemDets.desc}`}</p>
-              <p>{`التصنيف: ${packageItemDets.category}`}</p>
-              <p>{`السعر: ${packageItemDets.price}`}</p>
-              <p>{`التاريخ /الوقت: ${packageItemDets.createdAt}`}</p>
-            </div>
-          </React.Fragment>
-        ))}
+        <div className="package__container--image">
+          <Link to={`/getVisual/dashboard/pending/${id}/image`}>
+            <img className="shadow" src={img} alt="Package" />
+          </Link>
+        </div>
+        <div className="package__container--info">
+          <p>{packageItem.images && packageItem.images[0]}</p>
+          <p>{`اسم المستخدم: ${packageItem.user && packageItem.user.username}`}</p>
+          <p>{`اسم الخدمة: ${packageItem.name}`}</p>
+          <p>{`الوصف: ${packageItem.desc}`}</p>
+          <p>{`التصنيف: ${packageItem.category}`}</p>
+          <p>{`السعر: ${packageItem.price}`}</p>
+          <p>{`التاريخ /الوقت: ${packageItem.createdAt}`}</p>
+        </div>
       </div>
     </div>
   );

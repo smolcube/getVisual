@@ -135,7 +135,7 @@ const handleSubmit= async (e) =>{
 
         <div className='form-btn'>
         <ButtonCTA
-        class="pri-cta cta"
+        className="pri-cta cta"
         type="submit"
         name="ســجّـل الدخول"
         />

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
 // import controllers
 const { main, logout } = require('../controllers/mainController');
@@ -8,7 +9,6 @@ const { login, getProfile, deletePackage } = require('../controllers/loginContro
 const { forgotPass ,verifyUser,  resetPass } = require('../controllers/passResetingController')
 const { search, package } = require('../controllers/searchController')
 const { private } = require('../middleware/authHandler');
-const imageController = require('../controllers/imagesController');
 
 // Main routes
 router.get('/', main); // Visitors and there should be another on for registered
@@ -29,9 +29,5 @@ router.delete('/profile/:username/:packageId', deletePackage)
 
 router.get('/search/:searchValue', search);
 router.get('/package/:id', package);
-
-// Define route to serve images
-router.get('/images/:imageName', imageController.serveImage);
-
 
 module.exports = router;
